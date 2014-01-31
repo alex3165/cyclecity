@@ -1,0 +1,4 @@
+TODO
+
+Remplir le fichier head.php
+structurer bdd pour localisation
