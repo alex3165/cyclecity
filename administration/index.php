@@ -1,9 +1,9 @@
-<?php 
+<?php
+	session_start();
 	include ("functions.php");
 	if (!empty($_POST) && isset($_POST["login"]) && isset($_POST["mdp"])) {
 		$login = $_POST['login'];
 		$mdp = $_POST['mdp'];
-
 		$dbh = connect('localhost','duracity','root','root');
 		$reqlogin = $dbh -> prepare('select * from user where login = ?');
 		$reqlogin -> execute(array($login));
@@ -14,6 +14,9 @@
 		}
 		//print_r($donnees['mdp']." ".$mdp);
 		if ($login == $donnees['login'] && $mdp == $donnees['mdp']) {
+			$_SESSION['id'] = $donnees['id'];
+			$_SESSION['login'] = $donnees['login'];
+			$_SESSION['mdp'] = $donnees['mdp'];
 			header("location: admin.php");
 		}else{
 			echo '<div class="alert alert-danger">Mauvais identifiant ou mot de passe</div>';

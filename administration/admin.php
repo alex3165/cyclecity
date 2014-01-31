@@ -1,20 +1,20 @@
-<?php session_start(); ?>
+<?php session_start(); 
+if (!empty($_SESSION)) {
+?>
 <!doctype html>
 <html>
-<?php  
+<?php
 include ("head.php");
 include ("functions.php");
 ?>
 
 <div class="container">
-<h2>Ajouter de nouveaux utilisateurs</h2>
+<h2>Ajouter un nouvel utilisateur</h2>
 
 <?php
-
   $dbh = connect('localhost','duracity','root','root');
 
   if (!empty($_POST) && $dbh != 0){
-
       $prenom = $_POST['prenom'];
       $login = $_POST['login'];
       $mdp = $_POST['mdp'];
@@ -45,9 +45,37 @@ include ("functions.php");
     </div>
   </div>
 </form>
+<?php 
+    $reqloc = $dbh -> prepare('select * from localisation');
+    $reqloc -> execute();
+    $dataloc = $reqloc->fetch();
+    $reqloc->closeCursor();
 
+    //$requser = $dbh -> prepare('select * from user');
+    //$requser -> execute();
+    // while ($user = $requser->fetch())
+    // {
+    //   foreach ($user as $value) {
+    //     echo $value."<br>";
+    //   }
+    // }
+    //$requser->closeCursor();
+
+    //print_r($dataloc['long']);
+    //foreach ($datauser as $user => $value) {
+      //foreach ($dataloc as $loc) {
+        //$chiffre = $user['id'];
+        //print_r($value['prenom']); 
+        //echo $value['prenom'];
+      //}
+    //}
+?>
 <br>
 <a href="deco.php">deconnecter</a>
 
 </div>
 </html>
+<?php 
+}else{
+  header("location: index.php");
+} ?>
