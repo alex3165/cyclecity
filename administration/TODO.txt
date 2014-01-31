@@ -1,4 +1,7 @@
 TODO
 
-Remplir le fichier head.php
-structurer bdd pour localisation
+Sécurité -----------------------------
+
+- Sécuriser la navigation entre les pages ne pas accéder aux pages par url
+- Ne pas accéder aux pages par la navigation < > 
+- Interdire connexions au serveur sauf ip particulière
