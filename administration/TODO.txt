@@ -2,10 +2,11 @@ TODO
 
 Sécurité -----------------------------
 
-- Sécuriser la navigation entre les pages ne pas accéder aux pages par url
 - Ne pas accéder aux pages par la navigation < > 
 - Interdire connexions au serveur sauf ip particulière
 
 Fonctionnalitées ---------------------
 
-- Développer la fonctionnalité de traitement et stockage des localisations par POST pour applie ios
+- Développer la fonctionnalité de traitement et stockage des localisations par POST pour applie ios.
+
+
