@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
+//#import <CoreLocation/CoreLocation.h>
 #import "AFNetworking.h"
+#import "DCViewController.h"
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate>{
 
@@ -17,8 +18,8 @@
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *login;
+@property (weak, nonatomic) DCViewController *secondcontroller;
 @property (weak, nonatomic) IBOutlet UITextField *mdp;
-- (IBAction)valider:(id)sender;
 
 
 @end

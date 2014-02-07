@@ -1,0 +1,12 @@
+TODO
+
+Sécurité -----------------------------
+
+- Ne pas accéder aux pages par la navigation < > 
+- Interdire connexions au serveur sauf ip particulière
+
+Fonctionnalitées ---------------------
+
+- Développer la fonctionnalité de traitement et stockage des localisations par POST pour applie ios (EN COURS)
+- Tester la requête POST en exportant la structure administration sur mon hébergeur
+
