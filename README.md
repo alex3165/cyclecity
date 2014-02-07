@@ -1,5 +1,5 @@
 # Duracity
-### Student project about CO2 visualisation of Rennes
+### Student project about CO2 visualization of Rennes
 
 Project is composed of : 
 
