@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  DCLogViewController.h
 //  duracity
 //
 //  Created by RIEUX Alexandre on 02/02/2014.
@@ -7,19 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import <CoreLocation/CoreLocation.h>
 #import "AFNetworking.h"
 #import "DCViewController.h"
 
-@interface ViewController : UIViewController <CLLocationManagerDelegate>{
-
-    CLLocationManager* locationManager;
-    
+@interface DCLogViewController : UIViewController {
+    NSArray *jsonloginresponse;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *login;
-@property (weak, nonatomic) DCViewController *secondcontroller;
 @property (weak, nonatomic) IBOutlet UITextField *mdp;
+@property (weak, nonatomic) IBOutlet UIButton *validate;
+@property (weak, nonatomic) NSString *BaseURLString;
+
+- (IBAction)saisieReturn :(id)sender;
 
 
 @end

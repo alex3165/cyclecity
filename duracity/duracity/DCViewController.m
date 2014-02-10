@@ -9,14 +9,12 @@
 #import "DCViewController.h"
 
 @interface DCViewController ()
-@property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
-//@property(weak,nonatomic) NSMutableDictionary *positions;
+    @property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
+    @property (weak, nonatomic) DCLogViewController *firstcontroller;
 @end
 
 @implementation DCViewController
 
-    //NSDictionary *dico;
-    //NSMutableDictionary *positions = [NSMutableDictionary dico];
     NSString * mylatitude;
     NSString * mylongitude;
 
@@ -43,6 +41,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"%@", self.firstcontroller.BaseURLString);
+    //NSLog(@"My dictionary is %@", _idkey);
+    
     locationManager = [[CLLocationManager alloc] init];
     if ([CLLocationManager locationServicesEnabled])
     {

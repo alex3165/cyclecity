@@ -14,11 +14,26 @@ function check_password($password, $dbhash){
   return $test_hash === $valid_hash;
 }
 
+function generateKey() {
+	$length = 10;
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, strlen($characters) - 1)];
+    }
+    return $randomString;
+}
 
+function connect(){
+	$info = parse_ini_file("config.ini");
 
-function connect($hostname,$dbname,$username,$password){
+	$login = $info['login'];
+	$pass = $info['pass'];
+	$dbname = $info['dbname'];
+	$host = $info['host'];
+	
 	try {
-		$dbh = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
+		$dbh = new PDO("mysql:host=$host;dbname=$dbname", $login, $pass);
 		return $dbh;
 	}
 	catch(PDOException $e)

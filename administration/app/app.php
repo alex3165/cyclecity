@@ -1,10 +1,6 @@
-<!doctype html>
-<html>
 <?php
-include ("head.php");
-include ("functions.php");
 
-$dbh = connect('localhost','duracity','root','root');
+include ("../functions.php");
 
 $long = $_POST['long'];
 $lat = $_POST['lat'];

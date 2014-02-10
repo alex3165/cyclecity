@@ -4,7 +4,7 @@
 	if (!empty($_POST) && isset($_POST["login"]) && isset($_POST["mdp"])) {
 		$login = $_POST['login'];
 		$mdp = $_POST['mdp'];
-		$dbh = connect('localhost','duracity','root','root');
+		$dbh = connect();
 		$reqlogin = $dbh -> prepare('select * from user where login = ?');
 		$reqlogin -> execute(array($login));
 		$donnees = $reqlogin->fetch();
@@ -29,7 +29,7 @@
 	<body>
 	<div class="container center">
 		<h1>Duracity | Administration connexion</h1>
-		<form class="form-horizontal" method="post" action="index.php">
+		<form class="form-horizontal" method="post" action="app/login.php">
 			<div class="input-group center">
 				<input type="text" class="form-control" name="login" placeholder="Login" required>
 				<input type="password" class="form-control" name="mdp" placeholder="Mot de passe" required>

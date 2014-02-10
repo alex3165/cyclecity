@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "AFNetworking.h"
 #import <CoreLocation/CoreLocation.h>
+#import "DCLogViewController.h"
 
 @interface DCViewController : UIViewController <CLLocationManagerDelegate>{
     
@@ -16,6 +17,6 @@
     
 }
 
-
+@property (retain,nonatomic) NSMutableDictionary *idkey;
 
 @end
