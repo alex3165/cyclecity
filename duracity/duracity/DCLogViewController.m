@@ -55,14 +55,11 @@ NSString * text_mdp;
         [self.navigationController pushViewController:secondcontroller animated:YES];
         //NSLog(@"JSON: %@", responseObject);
         
-        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error: %@", error);
     }];
-    
 
 }
-
 
 
 @end
