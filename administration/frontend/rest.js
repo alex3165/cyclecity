@@ -8,12 +8,10 @@ $(document).ready(function () {
     $('#request').on('click', function(event) {
         var button = $(this);
         event.preventDefault();
-    
-        setTimeout(function(){
-            var datas = KeolisRequest();
-            console.log(datas);
-        },3000);
-        
+
+        KeolisRequest();
+        //console.log(datas);
+        /* idéalement traitement de l'objet 'response' ici */
     });
 
 });
@@ -28,8 +26,6 @@ function MakeMap(id) {
     var tiles = L.mapbox.tileLayer(id);
     var map = L.mapbox.map('map',id);
 }
-
-
 
 function KeolisRequest(){
     var response;
@@ -47,32 +43,16 @@ function KeolisRequest(){
         }
     });
 
-    function doSomethingLater( fn, time ) {
-        var dfd = $.Deferred();
-
-        setTimeout(function() {
-            dfd.resolve( fn() );
-        }, time || 0);
-
-        return dfd.promise();
-    }
 
     var success = function( ResponseObject ) {
         response = ResponseObject.opendata.answer.data;
-        //console.log(response);
-        
     };
 
     var err = function( req, status, err ) {
-        //console.log(err);
         response = err;
     };
 
-    var dfd = doSomethingLater(function() {
-        return response;
-    }, 100);
-    
-    dfd.then( success, err );
-    
+    req.then( success, err );
+    // return response;
 }
 
