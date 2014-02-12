@@ -1,7 +1,7 @@
 <?php
 	include ("../functions.php");
 
-	$url = "http://data.keolis-rennes.com/xml/";
+	$url = 'http://data.keolis-rennes.com/json/';
 	$keoliskey = '8W28SF1V3D03O3V';
 	$numberstation = '16';
 
