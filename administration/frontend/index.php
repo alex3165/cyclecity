@@ -33,6 +33,5 @@
         
         
         <script src="rest.js"></script>
-        <script src="mymap.js"></script>
     </body>
 </html>
