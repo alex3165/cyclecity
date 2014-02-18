@@ -6,9 +6,9 @@ Fonctionnalitées ---------------------
 
 - (BE) Make RESTFUL : envoi long et lat au SERV sur changement de position.
 
-- (FE) Interrogation de l’API keolis et placer les stations sur une map.
+- (FE) Interrogation de l’API keolis et placer les stations sur une map. //////// OK
 
-- (FE) Intégration d’une MAP sur une pleine page.
+- (FE) Intégration d’une MAP sur une pleine page. //////// OK
 
 
 Plus tard ———————————————
@@ -18,9 +18,9 @@ Plus tard ———————————————
 
 Design ——————————
 
-- Prototypage de la carte
+- Prototypage de la carte 
 
 
 Spécification ——————
 
-- (API Keolis) Rechargement des Slots et Bikes disponibles toutes les 30 sec en AJAX
+- (API Keolis) Rechargement des Slots et Bikes disponibles toutes les 30 sec en AJAX ///////// OK

@@ -64,6 +64,8 @@
     //myposition = [newLocation description];
     
     CLLocationCoordinate2D coordinate = [newLocation coordinate];
+    NSString * maPos = [newLocation description];
+    NSLog(@"%@",maPos);
     mylatitude = [NSString localizedStringWithFormat:@"%f",coordinate.latitude];
     mylongitude = [NSString localizedStringWithFormat:@"%f",coordinate.longitude];
     

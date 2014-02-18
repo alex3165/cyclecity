@@ -1,25 +1,36 @@
 <?php
+session_start();
 
-include ("../functions.php");
+require_once("../define.php");
+require_once("../model/functions.php");
 
+
+$sessionid = $_POST['key'];
 $long = $_POST['long'];
 $lat = $_POST['lat'];
-$id = 13;
+$id = 13; // Test avec un ID en dur, mettre id de l'utilisateur sur le long terme
 
-// UPDATE localisation SET lat = 12, long = 3 WHERE id_user = 13
-// echo $long." ".$lat;
-//$long = 42.2222;
-//$lat = -2;
+if ($sessionid == session_id()) {
+    if (!empty($long) && !empty($lat)) {
 
-if (!empty($long) && !empty($lat)) {
-	$req = $dbh -> prepare ("UPDATE localisation SET lat = :lat, lon = :long WHERE id_user = :id");
-	$req -> execute(array(
-	      'lat' => $lat,
-	      'long' => $long,
-	      'id' => $id
-	));
-	$req->closeCursor();
+        $dbh = connect();
+        $req = $dbh -> prepare ("UPDATE localisation SET lat = :lat, lon = :long WHERE id_user = :id");
+        $req -> execute(array(
+              'lat' => $lat,
+              'long' => $long,
+              'id' => $id
+        ));
+        $req->closeCursor();
+
+        $jsonstring = json_encode('Well, data has been added');
+        header('Content-Type: application/json; charset=utf-8');
+        echo $jsonstring;
+    }
+
+}else{
+    $jsonstring = json_encode('Fail, session_id not good');
+    header('Content-Type: application/json; charset=utf-8');
+    echo $jsonstring;
 }
 
 ?>
-</html>

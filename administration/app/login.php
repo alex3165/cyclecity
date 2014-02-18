@@ -1,6 +1,8 @@
 <?php
 	session_start();
-	include ("../functions.php");
+	//echo session_id()." ".session_name();
+	require_once("../define.php");
+	require_once(MODEL."functions.php");
 
 	if (!empty($_POST) && isset($_POST["login"]) && isset($_POST["mdp"])) {
 		$login = $_POST['login'];
@@ -17,12 +19,14 @@
 			//echo '<div class="alert alert-danger">impossible de récupérer le login et le mdp</div>';
 		}
 		if ($login == $donnees['login'] && $mdp == $donnees['mdp']) {
+			$_SESSION['name'] = $donnees['prenom'];
 			$_SESSION['id'] = $donnees['id'];
 			$_SESSION['login'] = $donnees['login'];
 			$_SESSION['mdp'] = $donnees['mdp'];
-			$_SESSION['key'] = generateKey();
+			$_SESSION['key'] = session_id();//generateKey();
 			$json[]= array(
        			'id' => $_SESSION['id'],
+       			'name' => $_SESSION['name'],
      			'key' => $_SESSION['key']
     		);
 			$jsonstring = json_encode($json);

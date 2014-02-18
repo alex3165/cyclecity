@@ -1,42 +1,36 @@
 <?php
-	session_start();
-	include ("functions.php");
-	if (!empty($_POST) && isset($_POST["login"]) && isset($_POST["mdp"])) {
-		$login = $_POST['login'];
-		$mdp = $_POST['mdp'];
-		$dbh = connect();
-		$reqlogin = $dbh -> prepare('select * from user where login = ?');
-		$reqlogin -> execute(array($login));
-		$donnees = $reqlogin->fetch();
-		$reqlogin->closeCursor();
-		if ($dbh == 0) {
-			echo '<div class="alert alert-danger">Connexion à la bdd impossible</div>';
-		}
-		//print_r($donnees['mdp']." ".$mdp);
-		if ($login == $donnees['login'] && $mdp == $donnees['mdp']) {
-			$_SESSION['id'] = $donnees['id'];
-			$_SESSION['login'] = $donnees['login'];
-			$_SESSION['mdp'] = $donnees['mdp'];
-			header("location: admin.php");
-		}else{
-			echo '<div class="alert alert-danger">Mauvais identifiant ou mot de passe</div>';
-		}
-	}
-	include ("head.php");
-?>
-<!doctype html>
-<html>
-	<body>
-	<div class="container center">
-		<h1>Duracity | Administration connexion</h1>
-		<form class="form-horizontal" method="post" action="app/login.php">
-			<div class="input-group center">
-				<input type="text" class="form-control" name="login" placeholder="Login" required>
-				<input type="password" class="form-control" name="mdp" placeholder="Mot de passe" required>
-				<button type="submit" class="btn btn-primary">Valider</button>
-			</div>
-		</form>
-	</div>
-	</body>
+session_start();
+include('define.php');
 
-</html>
+// On récupère la page souhaitée par l'utilisateur
+$p = (!empty($_GET['p'])) ? htmlentities($_GET['p']) : 'log';
+
+ // if (!empty($_GET['p'])) {
+ // 	echo $_GET['p'];
+ // }
+
+// On répertorie les pages accessibles
+$array_pages = array(
+	'index' => 'index.php',
+	'log' 	=> VIEW.'logview.php',
+	'admin' => VIEW.'adminview.php'
+);
+
+// On dirige l'utilisateur
+if(!array_key_exists($p, $array_pages)) $page = 'index.php';
+elseif(!is_file($array_pages[$p])) $page = 'erreur.php';
+else $page = $array_pages[$p];
+
+
+if ($page == 'rest.php') {
+	include($page);
+}else{
+	include(MODEL.'functions.php'); // Insertion du fichier de configuration
+	include(VIEW.'head.php');   	// Insertion de l'en-tête commun à toutes les pages
+	include($page);	   				// Insertion de la page requise
+}
+
+
+
+
+?>
