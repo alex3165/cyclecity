@@ -24,10 +24,14 @@
 		22659E1E189EB11100E01227 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 22659E1C189EB11100E01227 /* InfoPlist.strings */; };
 		22659E20189EB11100E01227 /* duracityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22659E1F189EB11100E01227 /* duracityTests.m */; };
 		22659E2D189EC0F800E01227 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22659E2C189EC0F800E01227 /* CoreLocation.framework */; };
+		229933FB18B915C000E08AB7 /* DCTrackService.m in Sources */ = {isa = PBXBuildFile; fileRef = 229933FA18B915C000E08AB7 /* DCTrackService.m */; };
+		229933FC18B915C000E08AB7 /* DCTrackService.m in Sources */ = {isa = PBXBuildFile; fileRef = 229933FA18B915C000E08AB7 /* DCTrackService.m */; };
 		22DA835D18B28C1E0014CCA5 /* DCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835C18B28C1E0014CCA5 /* DCUser.m */; };
 		22DA835E18B28C1E0014CCA5 /* DCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835C18B28C1E0014CCA5 /* DCUser.m */; };
 		22DA836118B28D7B0014CCA5 /* DCRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA836018B28D7B0014CCA5 /* DCRequests.m */; };
 		22DA836218B28D7B0014CCA5 /* DCRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA836018B28D7B0014CCA5 /* DCRequests.m */; };
+		22FDC02418B7CCEB00F1F403 /* logo_ss-02.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FDC02318B7CCEB00F1F403 /* logo_ss-02.png */; };
+		22FDC02718B7CED900F1F403 /* DCLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FDC02618B7CED900F1F403 /* DCLoginView.m */; };
 		EA4DFBC3BE6B488B8CFA35FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E2D4716CFB4C03BA6B1303 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -65,10 +69,15 @@
 		22659E1D189EB11100E01227 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		22659E1F189EB11100E01227 /* duracityTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = duracityTests.m; sourceTree = "<group>"; };
 		22659E2C189EC0F800E01227 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		229933F918B915C000E08AB7 /* DCTrackService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTrackService.h; sourceTree = "<group>"; };
+		229933FA18B915C000E08AB7 /* DCTrackService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCTrackService.m; sourceTree = "<group>"; };
 		22DA835B18B28C1E0014CCA5 /* DCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCUser.h; sourceTree = "<group>"; };
 		22DA835C18B28C1E0014CCA5 /* DCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCUser.m; sourceTree = "<group>"; };
 		22DA835F18B28D7B0014CCA5 /* DCRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRequests.h; sourceTree = "<group>"; };
 		22DA836018B28D7B0014CCA5 /* DCRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRequests.m; sourceTree = "<group>"; };
+		22FDC02318B7CCEB00F1F403 /* logo_ss-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo_ss-02.png"; path = "../../../../Master Rennes/cours/smartcity S2/recherche_2/logo_ss-02.png"; sourceTree = "<group>"; };
+		22FDC02518B7CED900F1F403 /* DCLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLoginView.h; sourceTree = "<group>"; };
+		22FDC02618B7CED900F1F403 /* DCLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLoginView.m; sourceTree = "<group>"; };
 		51E2D4716CFB4C03BA6B1303 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		697CD770E35B49C182F3020A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,6 +170,7 @@
 				223F165418A82E43008FD859 /* model */,
 				223F165318A82E35008FD859 /* controler */,
 				22659E06189EB11100E01227 /* Main.storyboard */,
+				22FDC02818B7CEEA00F1F403 /* view */,
 				220451BF18A4305100D6408D /* DCViewController.xib */,
 				22659E0C189EB11100E01227 /* Images.xcassets */,
 				22659DFB189EB11100E01227 /* Supporting Files */,
@@ -171,6 +181,7 @@
 		22659DFB189EB11100E01227 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				22FDC02318B7CCEB00F1F403 /* logo_ss-02.png */,
 				22659DFC189EB11100E01227 /* duracity-Info.plist */,
 				22659DFD189EB11100E01227 /* InfoPlist.strings */,
 				22659E00189EB11100E01227 /* main.m */,
@@ -202,8 +213,19 @@
 			children = (
 				22DA835F18B28D7B0014CCA5 /* DCRequests.h */,
 				22DA836018B28D7B0014CCA5 /* DCRequests.m */,
+				229933F918B915C000E08AB7 /* DCTrackService.h */,
+				229933FA18B915C000E08AB7 /* DCTrackService.m */,
 			);
 			name = services;
+			sourceTree = "<group>";
+		};
+		22FDC02818B7CEEA00F1F403 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				22FDC02518B7CED900F1F403 /* DCLoginView.h */,
+				22FDC02618B7CED900F1F403 /* DCLoginView.m */,
+			);
+			name = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -285,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22659E0D189EB11100E01227 /* Images.xcassets in Resources */,
+				22FDC02418B7CCEB00F1F403 /* logo_ss-02.png in Resources */,
 				22659DFF189EB11100E01227 /* InfoPlist.strings in Resources */,
 				22659E08189EB11100E01227 /* Main.storyboard in Resources */,
 				220451C118A4305100D6408D /* DCViewController.xib in Resources */,
@@ -339,12 +362,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229933FB18B915C000E08AB7 /* DCTrackService.m in Sources */,
 				22659E0B189EB11100E01227 /* DCLogViewController.m in Sources */,
 				22659E05189EB11100E01227 /* AppDelegate.m in Sources */,
 				22DA836118B28D7B0014CCA5 /* DCRequests.m in Sources */,
 				22659E01189EB11100E01227 /* main.m in Sources */,
 				220451C018A4305100D6408D /* DCViewController.m in Sources */,
 				22DA835D18B28C1E0014CCA5 /* DCUser.m in Sources */,
+				22FDC02718B7CED900F1F403 /* DCLoginView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229933FC18B915C000E08AB7 /* DCTrackService.m in Sources */,
 				22659E20189EB11100E01227 /* duracityTests.m in Sources */,
 				22DA835E18B28C1E0014CCA5 /* DCUser.m in Sources */,
 				22DA836218B28D7B0014CCA5 /* DCRequests.m in Sources */,

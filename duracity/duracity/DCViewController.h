@@ -11,12 +11,20 @@
 #import <CoreLocation/CoreLocation.h>
 #import "DCLogViewController.h"
 
+#import "DCUser.h"
+#import "DCRequests.h"
+#import "DCTrackService.h"
+
 @interface DCViewController : UIViewController <CLLocationManagerDelegate>{
     
     CLLocationManager* locationManager;
     
 }
 
-@property (retain,nonatomic) NSMutableDictionary *idkey;
+// Objet Request pour faire appel aux différentes requêtes
+@property (nonatomic, strong) DCRequests *requests;
+@property (nonatomic, strong) DCTrackService *trackService;
+@property (nonatomic, strong) DCUser *currentUser;
+
 
 @end

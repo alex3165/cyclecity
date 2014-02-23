@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Page de test</title>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>-->
         <link rel="stylesheet" href="../dist/css/bootstrap.css">
 		<link rel="stylesheet" href="../dist/css/bootstrap-theme.css">
     </head>
@@ -25,6 +25,11 @@
 		<div class="row">
 			<div id="reqapp" class="col-md-4 col-md-offset-4 text-center">
 				
+			</div>
+		</div>
+		<div class="row">
+			<div id="reqdeco" class="col-md-4 col-md-offset-4 text-center">
+				<button type="button" class="btn btn-default">ReqDeco</button>
 			</div>
 		</div>
 	</div>

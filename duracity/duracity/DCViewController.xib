@@ -21,7 +21,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="request:" destination="-1" eventType="touchUpInside" id="gzd-7V-QO3"/>
+                        <action selector="requestEvent:" destination="-1" eventType="touchUpInside" id="gsw-LY-dj2"/>
                     </connections>
                 </button>
             </subviews>

@@ -9,14 +9,11 @@
 #import "DCViewController.h"
 
 @interface DCViewController ()
-    @property (nonatomic, strong) AFHTTPRequestOperationManager *manager;
     @property (weak, nonatomic) DCLogViewController *firstcontroller;
 @end
 
 @implementation DCViewController
 
-    NSString * mylatitude;
-    NSString * mylongitude;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,25 +24,17 @@
     return self;
 }
 
-- (IBAction)request:(id)sender {
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSDictionary *parameters = [[NSDictionary alloc] initWithObjectsAndKeys: mylatitude, @"lat", mylongitude, @"long", nil];
-    [manager POST:@"localhost:8888/app.php" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-    }];
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    NSLog(@"%@", self.firstcontroller.BaseURLString);
-    //NSLog(@"My dictionary is %@", _idkey);
-    
+    self.trackService = [[DCTrackService alloc] init];
+    self.requests = [[DCRequests alloc] init];
+    self.currentUser = [[DCUser alloc] init];
     locationManager = [[CLLocationManager alloc] init];
+    
+    
     if ([CLLocationManager locationServicesEnabled])
     {
         locationManager.delegate = self;
@@ -64,13 +53,16 @@
     //myposition = [newLocation description];
     
     CLLocationCoordinate2D coordinate = [newLocation coordinate];
-    NSString * maPos = [newLocation description];
-    NSLog(@"%@",maPos);
-    mylatitude = [NSString localizedStringWithFormat:@"%f",coordinate.latitude];
-    mylongitude = [NSString localizedStringWithFormat:@"%f",coordinate.longitude];
-    
+
+    self.currentUser.latitude = [NSString localizedStringWithFormat:@"%f",coordinate.latitude];
+    self.currentUser.longitude = [NSString localizedStringWithFormat:@"%f",coordinate.longitude];
     
 }
+
+- (IBAction)requestEvent:(id)sender {
+    NSLog(@"%@",self.currentUser.name);
+}
+
 
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error

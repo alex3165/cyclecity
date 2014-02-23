@@ -18,7 +18,7 @@
     
     if (self) {
         
-        NSURL *urlrequests = [NSURL URLWithString:@"http://terra.membrives.fr/app/api/"];
+        NSURL *urlrequests = [NSURL URLWithString:@"http://kalyptusprod.fr/api"];
         self.manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:urlrequests];
         self.manager.responseSerializer = [AFJSONResponseSerializer serializer];
         self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/html",nil];

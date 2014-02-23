@@ -10,15 +10,27 @@
 #import "AFNetworking.h"
 #import "DCViewController.h"
 
-@interface DCLogViewController : UIViewController {
-    NSArray *jsonloginresponse;
-}
+#import "DCRequests.h"
+#import "DCTrackService.h"
+#import "DCUser.h"
 
+@interface DCLogViewController : UIViewController
+
+
+
+// Toute la partie UI de l'application
 @property (weak, nonatomic) IBOutlet UITextField *login;
 @property (weak, nonatomic) IBOutlet UITextField *mdp;
 @property (weak, nonatomic) IBOutlet UIButton *validate;
-@property (weak, nonatomic) NSString *BaseURLString;
 
+// Objet Request pour faire appel aux différentes requêtes
+@property (nonatomic, strong) DCRequests *requests;
+@property (nonatomic, strong) DCTrackService *trackService;
+
+@property (nonatomic, strong) DCUser *currentUser;
+
+
+// Action Return du clavier ios
 - (IBAction)saisieReturn :(id)sender;
 
 

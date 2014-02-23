@@ -1,12 +1,12 @@
 // Créer une classe utilisateur (name, id, sessionkey, long, lat)
 
-var mypos ={
-    latitude : '',
-    longitude : ''
-};
+// var mypos ={
+//     latitude : '',
+//     longitude : ''
+// };
 
-var id;
-var _key;
+// var id;
+// var _key;
 
 var actualuser = new Person();
 
@@ -49,12 +49,12 @@ $('#reqlog .btn').on('click', function(event) {
     event.preventDefault();
 
     var _params = {
-        login : 'ohoh',
-        mdp : 'uhuh'
+        login : 'root',
+        mdp : 'root'
     };
     //console.log ($('#login').val);
     var success = function(data){
-
+        //console.log(data);
         actualuser.setIdentity(data[0].id,data[0].name,data[0].key); // Fonction setIdentity de user.js avec les datas de la requête POST
 
         $('#reqapp').html('<button type="button" class="btn btn-default">ReqApp</button>');
@@ -84,7 +84,23 @@ $('#reqlog .btn').on('click', function(event) {
 });
 
 
+/********  Déconnection  **********/
 
+$('#reqdeco .btn').on('click', function(event) {
+    //console.log('yes');
+    event.preventDefault();
+    var deco = {
+        deco : true
+    };
+    var successdeco = function(data){
+        console.log(data);
+    };
+
+    postRequest('deco.php',deco, successdeco);
+
+});
+
+/***********************************/
 
 /*******************************
 
@@ -103,7 +119,7 @@ function errorHandler(error)
 
 
 function postRequest(page, params, success){
-
+//console.log(params+" "+page);
 var req = $.ajax({
     type: 'POST',
     url: page,
