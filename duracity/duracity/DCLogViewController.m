@@ -55,7 +55,7 @@ DCViewController *secondController;
         self.currentUser.name = [datas valueForKey:@"name"];
         
         NSLog(@"%@",datas);
-        NSLog(@"%@",self.currentUser);
+        NSLog(@"%@",self.currentUser.name);
     } failure:^(NSError *error) {
         
         NSLog(@"%@",error);

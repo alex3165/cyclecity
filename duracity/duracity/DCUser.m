@@ -21,7 +21,6 @@
         self.name = [dico objectForKey:@"name"];
         self.longitude = [dico objectForKey:@"long"];
         self.latitude = [dico objectForKey:@"lat"];
-        self.key = [dico objectForKey:@"key"];
     }
     
     return self;

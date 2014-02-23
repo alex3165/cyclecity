@@ -24,7 +24,7 @@
 // Objet Request pour faire appel aux différentes requêtes
 @property (nonatomic, strong) DCRequests *requests;
 @property (nonatomic, strong) DCTrackService *trackService;
-@property (nonatomic, strong) DCUser *currentUser;
+//@property (nonatomic, strong) DCUser *currentUser;
 
 
 @end

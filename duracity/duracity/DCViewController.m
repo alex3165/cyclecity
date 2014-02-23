@@ -31,7 +31,7 @@
     
     self.trackService = [[DCTrackService alloc] init];
     self.requests = [[DCRequests alloc] init];
-    self.currentUser = [[DCUser alloc] init];
+    //self.currentUser = [[DCUser alloc] init];
     locationManager = [[CLLocationManager alloc] init];
     
     

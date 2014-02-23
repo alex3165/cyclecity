@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		220451C018A4305100D6408D /* DCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220451BE18A4305100D6408D /* DCViewController.m */; };
 		220451C118A4305100D6408D /* DCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220451BF18A4305100D6408D /* DCViewController.xib */; };
+		222E376518BA9D4200E3B720 /* DCUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E376418BA9D4200E3B720 /* DCUserService.m */; };
+		222E376618BA9D4200E3B720 /* DCUserService.m in Sources */ = {isa = PBXBuildFile; fileRef = 222E376418BA9D4200E3B720 /* DCUserService.m */; };
 		22659DF5189EB11100E01227 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22659DF4189EB11100E01227 /* Foundation.framework */; };
 		22659DF7189EB11100E01227 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22659DF6189EB11100E01227 /* CoreGraphics.framework */; };
 		22659DF9189EB11100E01227 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22659DF8189EB11100E01227 /* UIKit.framework */; };
@@ -49,6 +51,8 @@
 		220451BD18A4305100D6408D /* DCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCViewController.h; sourceTree = "<group>"; };
 		220451BE18A4305100D6408D /* DCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCViewController.m; sourceTree = "<group>"; };
 		220451BF18A4305100D6408D /* DCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCViewController.xib; sourceTree = "<group>"; };
+		222E376318BA9D4200E3B720 /* DCUserService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCUserService.h; sourceTree = "<group>"; };
+		222E376418BA9D4200E3B720 /* DCUserService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCUserService.m; sourceTree = "<group>"; };
 		22659DF1189EB11100E01227 /* duracity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = duracity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22659DF4189EB11100E01227 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22659DF6189EB11100E01227 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -215,6 +219,8 @@
 				22DA836018B28D7B0014CCA5 /* DCRequests.m */,
 				229933F918B915C000E08AB7 /* DCTrackService.h */,
 				229933FA18B915C000E08AB7 /* DCTrackService.m */,
+				222E376318BA9D4200E3B720 /* DCUserService.h */,
+				222E376418BA9D4200E3B720 /* DCUserService.m */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -365,6 +371,7 @@
 				229933FB18B915C000E08AB7 /* DCTrackService.m in Sources */,
 				22659E0B189EB11100E01227 /* DCLogViewController.m in Sources */,
 				22659E05189EB11100E01227 /* AppDelegate.m in Sources */,
+				222E376518BA9D4200E3B720 /* DCUserService.m in Sources */,
 				22DA836118B28D7B0014CCA5 /* DCRequests.m in Sources */,
 				22659E01189EB11100E01227 /* main.m in Sources */,
 				220451C018A4305100D6408D /* DCViewController.m in Sources */,
@@ -378,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				229933FC18B915C000E08AB7 /* DCTrackService.m in Sources */,
+				222E376618BA9D4200E3B720 /* DCUserService.m in Sources */,
 				22659E20189EB11100E01227 /* duracityTests.m in Sources */,
 				22DA835E18B28C1E0014CCA5 /* DCUser.m in Sources */,
 				22DA836218B28D7B0014CCA5 /* DCRequests.m in Sources */,
