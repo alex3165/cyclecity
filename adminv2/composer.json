@@ -1,0 +1,18 @@
+{
+	"autoload": {
+		"psr-0": {
+			"SimpleUser": "src/"
+		}
+	},
+	"require": {
+		"silex/silex": "~1.1",
+		"twig/twig": ">=1.8,<2.0-dev",
+		"symfony/twig-bridge": "~2.3",
+		"symfony/security": "~2.3",
+		"doctrine/dbal": "~2.2",
+		"symfony/translation": "~2.3",
+		"symfony/config": "~2.3",
+        "symfony/yaml": "~2.3",
+        "deralex/yaml-config-service-provider": "1.0.x-dev"
+	}
+}

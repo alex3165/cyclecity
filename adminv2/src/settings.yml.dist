@@ -1,0 +1,12 @@
+database:
+# With mysql :
+#    driver: pdo_mysql
+#    host: localhost
+#    dbname: duracity
+#    user: duracity
+#    password: duracity
+#    charset: utf8
+
+# With sqlite :
+#     driver: pdo_sqlite
+#     path: app.db
