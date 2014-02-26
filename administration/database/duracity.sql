@@ -3,18 +3,12 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Ven 31 Janvier 2014 à 20:13
+-- Généré le: Mer 26 Février 2014 à 09:43
 -- Version du serveur: 5.5.29
 -- Version de PHP: 5.4.10
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
 --
 -- Base de données: `duracity`
@@ -27,20 +21,28 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `localisation` (
+  `id_trajet` int(255) NOT NULL,
+  `long` float NOT NULL,
+  `lat` float NOT NULL,
+  `vitesse` float NOT NULL,
+  `altitude` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `trajet`
+--
+
+CREATE TABLE `trajet` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
-  `lat` decimal(65,30) NOT NULL,
-  `long` decimal(65,30) NOT NULL,
   `id_user` int(255) NOT NULL,
+  `debut` time NOT NULL,
+  `fin` time NOT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_user` (`id_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
-
---
--- Contenu de la table `localisation`
---
-
-INSERT INTO `localisation` (`id`, `lat`, `long`, `id_user`) VALUES
-(1, 48.113475000000000000000000000000, -1.675708000000000000000000000000, 1);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -54,25 +56,21 @@ CREATE TABLE `user` (
   `login` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `mdp` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`id`, `prenom`, `login`, `mdp`) VALUES
-(1, 'alex', 'root', 'root');
+(1, 'Alex', 'root', 'root');
 
 --
 -- Contraintes pour les tables exportées
 --
 
 --
--- Contraintes pour la table `localisation`
+-- Contraintes pour la table `trajet`
 --
-ALTER TABLE `localisation`
-  ADD CONSTRAINT `localisation_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+ALTER TABLE `trajet`
+  ADD CONSTRAINT `trajet_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`);

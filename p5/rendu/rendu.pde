@@ -29,7 +29,7 @@ Location myloc;
 //JSONObject datasJsonobject;
 
 void setup() {
-	size(800, 600, P3D); // displayWidth, displayHeight-120, P3D
+	size(800, 600, P3D);
 	String tilesStr = sketchPath("data/Alexandre.mbtiles");
 
 	map = new UnfoldingMap(this,new MBTilesMapProvider(tilesStr));
@@ -49,7 +49,7 @@ void draw() {
 	stroke(255);
 	line(width/2, height/2, 0, width/2, height/2, 200);
 	camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
-	//map.draw();
+	map.draw();
 }
 
 void GetBikeStation() {
@@ -69,9 +69,9 @@ void GetBikeStation() {
 		rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
 		String datas = rd.readLine();
 
-		JSONTokener tokener = new JSONTokener(datas);
-		JSONArray finalResult = new JSONArray(tokener);
-		finalResult.getString(3);
+		// JSONTokener tokener = new JSONTokener(datas);
+		// JSONArray finalResult = new JSONArray(tokener);
+		// finalResult.getString(3);
 	    // while ((datas = rd.readLine()) != null) {
 	    // 	println("LINE");
 	    //   System.out.println(datas);
