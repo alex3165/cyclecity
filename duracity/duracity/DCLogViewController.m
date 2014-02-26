@@ -20,6 +20,7 @@
 NSString * text_login;
 NSString * text_mdp;
 DCViewController *secondController;
+DCUserService *currentUser;
 
 - (void)viewDidLoad
 {
@@ -28,10 +29,9 @@ DCViewController *secondController;
     // Initialisation de mes objets Requêtes et de mon service de tracking !
     
     self.trackService = [[DCTrackService alloc] init];
-    self.requests = [[DCRequests alloc] init];
-    self.currentUser = [[DCUser alloc] init];
-    
     secondController = [[DCViewController alloc]init];
+    currentUser = [[DCUserService alloc]init];
+    
    // [self.navigationController pushViewController:secondController animated:true]; // Pour debeug
 }
 
@@ -48,14 +48,11 @@ DCViewController *secondController;
     
     [self.trackService loginWithLoginAndPassword:text_login password:text_mdp success:^(NSDictionary *datas){
         
-        [self.navigationController pushViewController:secondController animated:true];
-
-        self.currentUser.iduser = [datas valueForKey:@"id"];
-        self.currentUser.key = [datas valueForKey:@"key"];
-        self.currentUser.name = [datas valueForKey:@"name"];
         
-        NSLog(@"%@",datas);
-        NSLog(@"%@",self.currentUser.name);
+        [self.navigationController pushViewController:secondController animated:true];
+        [currentUser createUserWithIdAndName:[datas valueForKey:@"id"] name:[datas valueForKey:@"name"]];//[datas valueForKey:@"name"]
+        
+        NSLog(@"%@",currentUser.getUser);
     } failure:^(NSError *error) {
         
         NSLog(@"%@",error);

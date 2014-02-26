@@ -15,6 +15,6 @@
 
 -(void)setUserLatAndLong:(NSString*)latitude longitude:(NSString*)longitude;
 
-+(NSDictionary*)GetUser;
+-(NSDictionary*)getUser;
 
 @end

@@ -54,13 +54,13 @@
     
     CLLocationCoordinate2D coordinate = [newLocation coordinate];
 
-    self.firstcontroller.currentUser.latitude = [NSString localizedStringWithFormat:@"%f",coordinate.latitude];
-    self.firstcontroller.currentUser.longitude = [NSString localizedStringWithFormat:@"%f",coordinate.longitude];
+    //self.firstcontroller.currentUser.latitude = [NSString localizedStringWithFormat:@"%f",coordinate.latitude];
+    //self.firstcontroller.currentUser.longitude = [NSString localizedStringWithFormat:@"%f",coordinate.longitude];
     
 }
 
 - (IBAction)requestEvent:(id)sender {
-    NSLog(@"%@",self.firstcontroller.currentUser.name);
+   // NSLog(@"%@",self.firstcontroller.currentUser.name);
 }
 
 

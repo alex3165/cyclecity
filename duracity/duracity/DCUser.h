@@ -17,5 +17,6 @@
 @property (nonatomic,strong) NSString *latitude;
 
 - (id)initWithDictionary:(NSDictionary *)dico;
+- (NSDictionary*)getUserDictionary;
 
 @end

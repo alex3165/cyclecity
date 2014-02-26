@@ -14,7 +14,7 @@ DCUser* user;
 
 -(void)createUserWithIdAndName:(NSString*)iduser name:(NSString*)name{
     
-    NSDictionary *userdico =[[NSDictionary alloc] initWithObjectsAndKeys:@{@"id":iduser, @"name":name}, nil];
+    NSDictionary *userdico =[[NSDictionary alloc] initWithObjectsAndKeys:@"id",iduser, @"name",name, nil];
     
     user = [[DCUser alloc] initWithDictionary:userdico];
     
@@ -27,14 +27,9 @@ DCUser* user;
 }
 
 
-+(NSDictionary*)GetUser{
+-(NSDictionary*)getUser{
     
-    NSString * username = user.name;
-    NSString * userid = user.iduser;
-    
-    NSDictionary* userinfos = [[NSDictionary alloc] initWithObjectsAndKeys:@{@"name":username, @"id":userid}, nil];
-    
-    return userinfos;
+    return [user getUserDictionary];
 
 }
 

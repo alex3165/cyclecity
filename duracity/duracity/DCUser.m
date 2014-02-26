@@ -26,5 +26,12 @@
     return self;
 }
 
+- (NSDictionary*)getUserDictionary
+{
+    NSDictionary *userInfos;
+
+    [userInfos initWithObjectsAndKeys:@"id", self.iduser, @"name", self.name, @"longitude", self.longitude, @"latitude", self.latitude, nil];
+    return userInfos;
+}
 
 @end
