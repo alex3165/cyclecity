@@ -18,5 +18,6 @@
 
 - (id)initWithDictionary:(NSDictionary *)dico;
 - (NSDictionary*)getUserDictionary;
++(DCUser*)currentUser;
 
 @end

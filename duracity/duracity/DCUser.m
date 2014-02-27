@@ -10,6 +10,31 @@
 
 @implementation DCUser
 
+static DCUser* _currentUser = nil;
+
++(DCUser*)currentUser{
+    @synchronized([DCUser class]){
+        if (!_currentUser){
+            [[self alloc] init];
+        }
+        
+		return _currentUser;
+    }
+    return nil;
+}
+
++(id)alloc
+{
+	@synchronized([DCUser class])
+	{
+		NSAssert(_currentUser == nil,
+                 @"Attempted to allocate a second instance of a singleton.");
+		_currentUser = [super alloc];
+		return _currentUser;
+	}
+    
+	return nil;
+}
 
 - (id)initWithDictionary:(NSDictionary *)dico
 {

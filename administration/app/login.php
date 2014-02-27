@@ -36,8 +36,6 @@
             $jsonstring = json_encode($json);
             header('Content-Type: application/json; charset=utf-8');
             echo $jsonstring;
-        }else{
-            //echo '<div class="alert alert-danger">Mauvais identifiant ou mot de passe</div>';
         }
     }else{
         $jsonstring = json_encode('Fail, datas not received');

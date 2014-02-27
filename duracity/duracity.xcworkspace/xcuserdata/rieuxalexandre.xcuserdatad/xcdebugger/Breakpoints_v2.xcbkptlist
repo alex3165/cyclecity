@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "duracity/DCLogViewController.m"
-            timestampString = "415129429.578654"
+            timestampString = "415149160.836949"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "-valider:"
             landmarkType = "5">
          </BreakpointContent>

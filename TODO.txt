@@ -1,26 +1,28 @@
 TODO
 
-Fonctionnalitées ---------------------
 
-- (BE) Développer la fonctionnalité de traitement et stockage des localisations par POST pour applie ios (EN COURS)
+IN PROGRESS ------------------------
 
-- (BE) Make RESTFUL : envoi long et lat au SERV sur changement de position.
+- (P5) (API Keolis) Interogation API Keolis dans processing : ./p5/rendu/request.pde
 
-- (FE) Interrogation de l’API keolis et placer les stations sur une map. //////// OK
-
-- (FE) Intégration d’une MAP sur une pleine page. //////// OK
+- (IOS) Singleton DCUser, méthode GetUser
 
 
-Plus tard ———————————————
 
-- Envoyer la vitesse.
+QUEUE ---------------------
+
+- (API) Endpoint Traject
+
+- (API) Endpoint location
+
+- (P5) Classe pour stocker les données sur les stations de vélo
 
 
-Design ——————————
 
-- Prototypage de la carte 
+DONE -------------------------
 
+- (DESIGN) Prototype map
 
-Spécification ——————
+- (DESIGN) UI de l'app IOS
 
-- (API Keolis) Rechargement des Slots et Bikes disponibles toutes les 30 sec en AJAX ///////// OK
+- (API) Endpoint Login

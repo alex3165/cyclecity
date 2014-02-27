@@ -8,7 +8,7 @@
 
 #import "DCLogViewController.h"
 #import "DCTrackService.h"
-//#import "DCUser.h"
+#import "DCUser.h"
 #import "DCViewController.h"
 
 @interface DCLogViewController ()
@@ -20,7 +20,7 @@
 NSString * text_login;
 NSString * text_mdp;
 DCViewController *secondController;
-DCUserService *currentUser;
+//DCUserService *currentUser;
 
 - (void)viewDidLoad
 {
@@ -30,7 +30,7 @@ DCUserService *currentUser;
     
     self.trackService = [[DCTrackService alloc] init];
     secondController = [[DCViewController alloc]init];
-    currentUser = [[DCUserService alloc]init];
+    //currentUser = [[DCUserService alloc]init];
     
    // [self.navigationController pushViewController:secondController animated:true]; // Pour debeug
 }
@@ -48,11 +48,14 @@ DCUserService *currentUser;
     
     [self.trackService loginWithLoginAndPassword:text_login password:text_mdp success:^(NSDictionary *datas){
         
+        [[DCUser currentUser] initWithDictionary:datas];
+       // NSLog(@"%@",[[DCUser currentUser] getUserDictionary]);
         
         [self.navigationController pushViewController:secondController animated:true];
-        [currentUser createUserWithIdAndName:[datas valueForKey:@"id"] name:[datas valueForKey:@"name"]];//[datas valueForKey:@"name"]
+       // [currentUser createUserWithIdAndName:[datas valueForKey:@"id"] name:[datas valueForKey:@"name"]];//[datas valueForKey:@"name"]
         
-        NSLog(@"%@",currentUser.getUser);
+        
+        
     } failure:^(NSError *error) {
         
         NSLog(@"%@",error);
