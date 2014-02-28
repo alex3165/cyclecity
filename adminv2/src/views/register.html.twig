@@ -1,0 +1,29 @@
+{% extends "body.html.twig" %}
+
+{% block title %}Duracity | Administration{% endblock %}
+
+{% block content %}
+
+<main class="container center">
+    <h2>Ajouter un nouvel utilisateur</h2>
+
+    {% if error %}
+    <div class="alert alert-danger alert-dismissable">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        {{ error|trans|nl2br }}
+    </div>
+    {% endif %}
+
+    <form class="form-horizontal" method="POST" >
+      <div class="input-group center">
+        <input class="form-control" name="name" type="text" id="input-name" placeholder="Prénom" value="{{ name }}">
+        <input name="login" class="form-control" type="text" id="input-login" placeholder="Login" required value="{{ login }}">
+        <input class="form-control" name="password" type="password" id="input-password" required placeholder="Mot de passe">
+        <div class="input-prepend">
+          <button type="submit" class="btn btn-primary">Valider</button>
+      </div>
+  </form>
+  <p class="disconnect"><a href="{{ path('logout') }}">Déconnecter</a></p>
+</main>
+
+{% endblock %}

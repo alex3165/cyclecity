@@ -1,0 +1,5 @@
+/vendor
+/src/settings.yml
+*~
+*.db
+composer.phar

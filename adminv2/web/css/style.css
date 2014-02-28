@@ -1,0 +1,16 @@
+h1 {
+	margin: 3em 0em !important;
+}
+
+.center {
+	text-align: center;
+	margin:0 auto;
+}
+
+.input-group input {
+	margin-bottom: 1em !important;
+}
+
+.disconnect {
+	margin-top: 10px;
+}

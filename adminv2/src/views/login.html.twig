@@ -1,0 +1,23 @@
+{% extends "body.html.twig" %}
+
+{% block title %}Duracity | Administration connexion{% endblock %}
+
+{% block content %}
+<main class="container center">
+	<h1>Duracity | Administration connexion</h1>
+
+	<form class="form-horizontal" action="{{ path('login_check') }}" method="post">
+		{% if error %}
+		<div class="alert alert-danger alert-dismissable">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			{{ error|trans }}
+		</div>
+		{% endif %}
+		<div class="input-group center">
+			<input type="text" class="form-control" name="_username" value="{{ last_username }}" placeholder="Login" required />
+			<input type="password" class="form-control" name="_password" value="" placeholder="Mot de passe" required />
+			<button type="submit" class="btn btn-primary">Valider</button>
+		</div>
+	</form>
+</main>
+{% endblock %}
