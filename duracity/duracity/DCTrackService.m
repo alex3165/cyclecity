@@ -18,16 +18,16 @@
     
 }
 
--(void)setBeginTrajectWithId:(NSString *)iduser date:(NSString *)date timeBegin:(NSString *)timeBegin success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure{
+-(void)setBeginTrajectWithId:(NSString *)iduser success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure{
 
     DCRequests *request = [[DCRequests alloc]init];
-    [request POSTrequest:@"login.php" withParameters:@{@"id" : iduser, @"date" : date, @"timebegin" : timeBegin} success:success failure:failure];
+    [request POSTrequest:@"traject.php" withParameters:@{@"id" : iduser} success:success failure:failure];
 
 }
 
--(void)setEndTrajectWithIdtraject:(NSString *)idtraject timeEnd:(NSString *)timeEnd success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure{
+-(void)setEndTrajectWithIdtraject:(NSString *)idtraject success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure{
     DCRequests *request = [[DCRequests alloc]init];
-    [request POSTrequest:@"login.php" withParameters:@{@"idtraject" : idtraject, @"timeend" : timeEnd} success:success failure:failure];
+    [request POSTrequest:@"traject.php" withParameters:@{@"idtraject" : idtraject} success:success failure:failure];
 }
 
 

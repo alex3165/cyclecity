@@ -9,7 +9,7 @@
 #import "DCViewController.h"
 
 @interface DCViewController ()
-    @property (weak, nonatomic) DCLogViewController *firstcontroller;
+    @property (nonatomic, assign) BOOL clickCounter;
 @end
 
 @implementation DCViewController
@@ -30,51 +30,42 @@
     [super viewDidLoad];
     
     self.trackService = [[DCTrackService alloc] init];
-    self.requests = [[DCRequests alloc] init];
-    //self.currentUser = [[DCUser alloc] init];
-    locationManager = [[CLLocationManager alloc] init];
-    
-    
-    if ([CLLocationManager locationServicesEnabled])
-    {
-        locationManager.delegate = self;
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        locationManager.distanceFilter = 100.0f;
-        [locationManager startUpdatingLocation];
-    }
+    _clickCounter = YES;
+
     
 }
 
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation
-{
-    
-    //myposition = [newLocation description];
-    
-    CLLocationCoordinate2D coordinate = [newLocation coordinate];
-
-    //self.firstcontroller.currentUser.latitude = [NSString localizedStringWithFormat:@"%f",coordinate.latitude];
-    //self.firstcontroller.currentUser.longitude = [NSString localizedStringWithFormat:@"%f",coordinate.longitude];
-    
-}
 
 - (IBAction)requestEvent:(id)sender {
-   // NSLog(@"%@",self.firstcontroller.currentUser.name);
-}
-
-
-- (void)locationManager:(CLLocationManager *)manager
-       didFailWithError:(NSError *)error
-{
-    //myposition = [error description];
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    NSString *idUser = [[DCUser currentUser] getUserId];
+    
+    /******** Check how times user pressed requestEvent **********/
+    
+    //if (_clickCounter) {
+        [self.trackService setBeginTrajectWithId:idUser success:^(NSDictionary *datas){
+            
+            [[DCUser currentUser] setIdTraject:[datas objectForKey:@"idtraject"]];
+            //_clickCounter = NO;
+            //self.traceme.backgroundColor = [UIColor greenColor];
+        } failure:^(NSError *error) {
+            
+            NSLog(@"%@",error);
+            
+        }];
+//    }else{
+//        NSString *idtraject = [[DCUser currentUser] idTraject];
+//        [self.trackService setEndTrajectWithIdtraject:idtraject success:^{
+//            // Change color button
+//            _clickCounter = YES;
+//        } failure:^(NSError *error) {
+//            NSLog(@"%@",error);
+//        }];
+//    }
+    
+    /***********************************************************/
+    
+    
 }
 
 @end

@@ -12,12 +12,21 @@
 
 
 @property (nonatomic,strong) NSString *iduser;
+@property (nonatomic,strong) NSString *idTraject;
 @property (nonatomic,strong) NSString *name;
 @property (nonatomic,strong) NSString *longitude;
 @property (nonatomic,strong) NSString *latitude;
 
-- (id)initWithDictionary:(NSDictionary *)dico;
-- (NSDictionary*)getUserDictionary;
+- (void)fillWithDictionary:(NSDictionary *)dico;
+
+-(void)setIdTraject:(NSString *)idTraject;
+
+- (NSString*)getUserId;
+- (NSString*)getUserName;
+- (NSString*)getUserLong;
+- (NSString*)getUserLat;
+
 +(DCUser*)currentUser;
+
 
 @end

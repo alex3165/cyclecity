@@ -13,50 +13,42 @@
 static DCUser* _currentUser = nil;
 
 +(DCUser*)currentUser{
-    @synchronized([DCUser class]){
-        if (!_currentUser){
-            [[self alloc] init];
-        }
-        
-		return _currentUser;
-    }
-    return nil;
+    static dispatch_once_t once;
+    static id currentUser;
+    dispatch_once(&once, ^{
+        currentUser = [[self alloc] init];
+    });
+    return currentUser;
 }
 
-+(id)alloc
+- (void)fillWithDictionary:(NSDictionary *)dico
 {
-	@synchronized([DCUser class])
-	{
-		NSAssert(_currentUser == nil,
-                 @"Attempted to allocate a second instance of a singleton.");
-		_currentUser = [super alloc];
-		return _currentUser;
-	}
-    
-	return nil;
-}
-
-- (id)initWithDictionary:(NSDictionary *)dico
-{
-    self = [super init];
-    
-    if (self) {
         
         self.iduser = [dico objectForKey:@"id"];
         self.name = [dico objectForKey:@"name"];
         self.longitude = [dico objectForKey:@"long"];
         self.latitude = [dico objectForKey:@"lat"];
-    }
-    
-    return self;
+
 }
 
-- (NSDictionary*)getUserDictionary
-{
-    NSDictionary *userInfos;
+-(void)setIdTraject:(NSString *)idTraject{
+    self.idTraject = idTraject;
+}
 
-    [userInfos initWithObjectsAndKeys:@"id", self.iduser, @"name", self.name, @"longitude", self.longitude, @"latitude", self.latitude, nil];
-    return userInfos;
+- (NSString*)getUserName{
+    return self.name;
+}
+
+- (NSString*)getUserId{
+    return self.iduser;
+}
+
+- (NSString*)getUserLat{
+    return self.latitude;
+}
+
+- (NSString*)getUserLong{
+    return self.longitude;
 }
 
 @end

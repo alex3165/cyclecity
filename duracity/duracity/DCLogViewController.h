@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AFNetworking.h"
+//#import "AFNetworking.h"
 #import "DCViewController.h"
-
-#import "DCRequests.h"
+#import "DCUser.h"
+//#import "DCRequests.h"
 #import "DCTrackService.h"
-//#import "DCUserService.h"
 
 @interface DCLogViewController : UIViewController
 
@@ -25,7 +24,6 @@
 
 // Objet Request pour faire appel aux différentes requêtes
 @property (nonatomic, strong) DCTrackService *trackService;
-//@property (nonatomic,strong) DCUserService *currentUser;
 
 
 // Action Return du clavier ios
