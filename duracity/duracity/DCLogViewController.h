@@ -24,6 +24,7 @@
 
 // Objet Request pour faire appel aux différentes requêtes
 @property (nonatomic, strong) DCTrackService *trackService;
+@property (retain, nonatomic) IBOutlet UIImageView *logoView;
 
 
 // Action Return du clavier ios

@@ -37,6 +37,12 @@
 {
 
     CLLocationCoordinate2D coordinate = [newLocation coordinate];
+    CLLocationSpeed userspeed = [newLocation speed];
+
+    [[DCUser currentUser] setLatitude:[[NSNumber numberWithDouble:coordinate.latitude] stringValue]];
+    [[DCUser currentUser] setLongitude:[[NSNumber numberWithDouble:coordinate.longitude] stringValue]];
+    
+    NSLog(@"%f %f %f",coordinate.latitude,coordinate.longitude,userspeed);
 
 }
 

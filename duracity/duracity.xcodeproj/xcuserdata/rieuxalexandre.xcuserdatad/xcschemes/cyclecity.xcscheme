@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "22659DF0189EB11000E01227"
-               BuildableName = "duracity.app"
-               BlueprintName = "duracity"
+               BuildableName = "cyclecity.app"
+               BlueprintName = "cyclecity"
                ReferencedContainer = "container:duracity.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "22659E11189EB11100E01227"
-               BuildableName = "duracityTests.xctest"
-               BlueprintName = "duracityTests"
+               BuildableName = "cyclecityTests.xctest"
+               BlueprintName = "cyclecityTests"
                ReferencedContainer = "container:duracity.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "22659DF0189EB11000E01227"
-            BuildableName = "duracity.app"
-            BlueprintName = "duracity"
+            BuildableName = "cyclecity.app"
+            BlueprintName = "cyclecity"
             ReferencedContainer = "container:duracity.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "22659DF0189EB11000E01227"
-            BuildableName = "duracity.app"
-            BlueprintName = "duracity"
+            BuildableName = "cyclecity.app"
+            BlueprintName = "cyclecity"
             ReferencedContainer = "container:duracity.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -80,8 +80,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "22659DF0189EB11000E01227"
-            BuildableName = "duracity.app"
-            BlueprintName = "duracity"
+            BuildableName = "cyclecity.app"
+            BlueprintName = "cyclecity"
             ReferencedContainer = "container:duracity.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

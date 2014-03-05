@@ -26,6 +26,12 @@
 		22659E2D189EC0F800E01227 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22659E2C189EC0F800E01227 /* CoreLocation.framework */; };
 		229933FB18B915C000E08AB7 /* DCTrackService.m in Sources */ = {isa = PBXBuildFile; fileRef = 229933FA18B915C000E08AB7 /* DCTrackService.m */; };
 		229933FC18B915C000E08AB7 /* DCTrackService.m in Sources */ = {isa = PBXBuildFile; fileRef = 229933FA18B915C000E08AB7 /* DCTrackService.m */; };
+		22A7632018C5F66A00EE28F6 /* logo58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A7631D18C5F66900EE28F6 /* logo58x58.png */; };
+		22A7632118C5F66A00EE28F6 /* logo58x58.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A7631D18C5F66900EE28F6 /* logo58x58.png */; };
+		22A7632218C5F66A00EE28F6 /* logo80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A7631E18C5F66900EE28F6 /* logo80x80.png */; };
+		22A7632318C5F66A00EE28F6 /* logo80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A7631E18C5F66900EE28F6 /* logo80x80.png */; };
+		22A7632418C5F66A00EE28F6 /* logo120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A7631F18C5F66A00EE28F6 /* logo120x120.png */; };
+		22A7632518C5F66A00EE28F6 /* logo120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A7631F18C5F66A00EE28F6 /* logo120x120.png */; };
 		22DA835D18B28C1E0014CCA5 /* DCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835C18B28C1E0014CCA5 /* DCUser.m */; };
 		22DA835E18B28C1E0014CCA5 /* DCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835C18B28C1E0014CCA5 /* DCUser.m */; };
 		22DA836118B28D7B0014CCA5 /* DCRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA836018B28D7B0014CCA5 /* DCRequests.m */; };
@@ -51,7 +57,7 @@
 		220451BD18A4305100D6408D /* DCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCViewController.h; sourceTree = "<group>"; };
 		220451BE18A4305100D6408D /* DCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCViewController.m; sourceTree = "<group>"; };
 		220451BF18A4305100D6408D /* DCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCViewController.xib; sourceTree = "<group>"; };
-		22659DF1189EB11100E01227 /* duracity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = duracity.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22659DF1189EB11100E01227 /* cyclecity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cyclecity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22659DF4189EB11100E01227 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		22659DF6189EB11100E01227 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		22659DF8189EB11100E01227 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -65,7 +71,7 @@
 		22659E09189EB11100E01227 /* DCLogViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCLogViewController.h; sourceTree = "<group>"; };
 		22659E0A189EB11100E01227 /* DCLogViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCLogViewController.m; sourceTree = "<group>"; };
 		22659E0C189EB11100E01227 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		22659E12189EB11100E01227 /* duracityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = duracityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22659E12189EB11100E01227 /* cyclecityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cyclecityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22659E13189EB11100E01227 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		22659E1B189EB11100E01227 /* duracityTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "duracityTests-Info.plist"; sourceTree = "<group>"; };
 		22659E1D189EB11100E01227 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -73,6 +79,9 @@
 		22659E2C189EC0F800E01227 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		229933F918B915C000E08AB7 /* DCTrackService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCTrackService.h; sourceTree = "<group>"; };
 		229933FA18B915C000E08AB7 /* DCTrackService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCTrackService.m; sourceTree = "<group>"; };
+		22A7631D18C5F66900EE28F6 /* logo58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo58x58.png; sourceTree = "<group>"; };
+		22A7631E18C5F66900EE28F6 /* logo80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo80x80.png; sourceTree = "<group>"; };
+		22A7631F18C5F66A00EE28F6 /* logo120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo120x120.png; sourceTree = "<group>"; };
 		22DA835B18B28C1E0014CCA5 /* DCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCUser.h; sourceTree = "<group>"; };
 		22DA835C18B28C1E0014CCA5 /* DCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCUser.m; sourceTree = "<group>"; };
 		22DA835F18B28D7B0014CCA5 /* DCRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRequests.h; sourceTree = "<group>"; };
@@ -148,8 +157,8 @@
 		22659DF2189EB11100E01227 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				22659DF1189EB11100E01227 /* duracity.app */,
-				22659E12189EB11100E01227 /* duracityTests.xctest */,
+				22659DF1189EB11100E01227 /* cyclecity.app */,
+				22659E12189EB11100E01227 /* cyclecityTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,6 +179,7 @@
 		22659DFA189EB11100E01227 /* duracity */ = {
 			isa = PBXGroup;
 			children = (
+				22A7631C18C5F1B100EE28F6 /* ressources */,
 				22DA835A18B28BF30014CCA5 /* services */,
 				223F165418A82E43008FD859 /* model */,
 				223F165318A82E35008FD859 /* controler */,
@@ -185,7 +195,6 @@
 		22659DFB189EB11100E01227 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				22FDC02318B7CCEB00F1F403 /* logo_ss-02.png */,
 				22659DFC189EB11100E01227 /* duracity-Info.plist */,
 				22659DFD189EB11100E01227 /* InfoPlist.strings */,
 				22659E00189EB11100E01227 /* main.m */,
@@ -210,6 +219,17 @@
 				22659E1C189EB11100E01227 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		22A7631C18C5F1B100EE28F6 /* ressources */ = {
+			isa = PBXGroup;
+			children = (
+				22A7631D18C5F66900EE28F6 /* logo58x58.png */,
+				22A7631E18C5F66900EE28F6 /* logo80x80.png */,
+				22A7631F18C5F66A00EE28F6 /* logo120x120.png */,
+				22FDC02318B7CCEB00F1F403 /* logo_ss-02.png */,
+			);
+			name = ressources;
 			sourceTree = "<group>";
 		};
 		22DA835A18B28BF30014CCA5 /* services */ = {
@@ -237,9 +257,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		22659DF0189EB11000E01227 /* duracity */ = {
+		22659DF0189EB11000E01227 /* cyclecity */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22659E23189EB11100E01227 /* Build configuration list for PBXNativeTarget "duracity" */;
+			buildConfigurationList = 22659E23189EB11100E01227 /* Build configuration list for PBXNativeTarget "cyclecity" */;
 			buildPhases = (
 				38C634D62031469A9332F4FB /* Check Pods Manifest.lock */,
 				22659DED189EB11000E01227 /* Sources */,
@@ -251,14 +271,14 @@
 			);
 			dependencies = (
 			);
-			name = duracity;
+			name = cyclecity;
 			productName = duracity;
-			productReference = 22659DF1189EB11100E01227 /* duracity.app */;
+			productReference = 22659DF1189EB11100E01227 /* cyclecity.app */;
 			productType = "com.apple.product-type.application";
 		};
-		22659E11189EB11100E01227 /* duracityTests */ = {
+		22659E11189EB11100E01227 /* cyclecityTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 22659E26189EB11100E01227 /* Build configuration list for PBXNativeTarget "duracityTests" */;
+			buildConfigurationList = 22659E26189EB11100E01227 /* Build configuration list for PBXNativeTarget "cyclecityTests" */;
 			buildPhases = (
 				22659E0E189EB11100E01227 /* Sources */,
 				22659E0F189EB11100E01227 /* Frameworks */,
@@ -269,9 +289,9 @@
 			dependencies = (
 				22659E18189EB11100E01227 /* PBXTargetDependency */,
 			);
-			name = duracityTests;
+			name = cyclecityTests;
 			productName = duracityTests;
-			productReference = 22659E12189EB11100E01227 /* duracityTests.xctest */;
+			productReference = 22659E12189EB11100E01227 /* cyclecityTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -301,8 +321,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				22659DF0189EB11000E01227 /* duracity */,
-				22659E11189EB11100E01227 /* duracityTests */,
+				22659DF0189EB11000E01227 /* cyclecity */,
+				22659E11189EB11100E01227 /* cyclecityTests */,
 			);
 		};
 /* End PBXProject section */
@@ -313,8 +333,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				22659E0D189EB11100E01227 /* Images.xcassets in Resources */,
+				22A7632418C5F66A00EE28F6 /* logo120x120.png in Resources */,
 				22FDC02418B7CCEB00F1F403 /* logo_ss-02.png in Resources */,
 				22659DFF189EB11100E01227 /* InfoPlist.strings in Resources */,
+				22A7632218C5F66A00EE28F6 /* logo80x80.png in Resources */,
+				22A7632018C5F66A00EE28F6 /* logo58x58.png in Resources */,
 				22659E08189EB11100E01227 /* Main.storyboard in Resources */,
 				220451C118A4305100D6408D /* DCViewController.xib in Resources */,
 			);
@@ -325,6 +348,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				22659E1E189EB11100E01227 /* InfoPlist.strings in Resources */,
+				22A7632518C5F66A00EE28F6 /* logo120x120.png in Resources */,
+				22A7632118C5F66A00EE28F6 /* logo58x58.png in Resources */,
+				22A7632318C5F66A00EE28F6 /* logo80x80.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +423,7 @@
 /* Begin PBXTargetDependency section */
 		22659E18189EB11100E01227 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 22659DF0189EB11000E01227 /* duracity */;
+			target = 22659DF0189EB11000E01227 /* cyclecity */;
 			targetProxy = 22659E17189EB11100E01227 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -506,8 +532,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 697CD770E35B49C182F3020A /* Pods.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "duracity/duracity-Prefix.pch";
 				INFOPLIST_FILE = "duracity/duracity-Info.plist";
@@ -520,8 +544,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 697CD770E35B49C182F3020A /* Pods.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "duracity/duracity-Prefix.pch";
 				INFOPLIST_FILE = "duracity/duracity-Info.plist";
@@ -584,7 +606,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		22659E23189EB11100E01227 /* Build configuration list for PBXNativeTarget "duracity" */ = {
+		22659E23189EB11100E01227 /* Build configuration list for PBXNativeTarget "cyclecity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22659E24189EB11100E01227 /* Debug */,
@@ -593,7 +615,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		22659E26189EB11100E01227 /* Build configuration list for PBXNativeTarget "duracityTests" */ = {
+		22659E26189EB11100E01227 /* Build configuration list for PBXNativeTarget "cyclecityTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				22659E27189EB11100E01227 /* Debug */,

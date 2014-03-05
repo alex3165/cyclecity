@@ -18,8 +18,6 @@
 
 @implementation DCLogViewController
 
-NSString * text_login;
-NSString * text_mdp;
 DCViewController *secondController;
 
 
@@ -29,6 +27,9 @@ DCViewController *secondController;
     [super viewDidLoad];
     
     // Initialisation de mes objets Requêtes et de mon service de tracking !
+    UIImage *myimage = [UIImage imageNamed:@"logo_ss-02.png"];
+    self.logoView = [[UIImageView alloc] initWithImage:myimage ];
+    //[secondController adsdSubview:self.logoView];
     
     self.trackService = [[DCTrackService alloc] init];
     secondController = [[DCViewController alloc]init];
@@ -42,10 +43,7 @@ DCViewController *secondController;
 
 - (IBAction)valider:(id)sender {
     
-    text_login = self.login.text;
-    text_mdp = self.mdp.text;
-    
-    [self.trackService loginWithLoginAndPassword:text_login password:text_mdp success:^(NSDictionary *datas){
+    [self.trackService loginWithLoginAndPassword:self.login.text password:self.mdp.text success:^(NSDictionary *datas){
         
         [[DCUser currentUser] fillWithDictionary:datas];
         

@@ -33,7 +33,7 @@
 
 -(void)UpdateLocvitaltWithIdtraject:(NSString *)idtraject long:(NSString *)longitude lat:(NSString *)latitude vit:(NSString *)vitesse alt:(NSString *)altitude success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure{
     DCRequests *request = [[DCRequests alloc]init];
-    [request POSTrequest:@"login.php" withParameters:@{@"idtraject" : idtraject, @"long" : longitude, @"lat" : latitude, @"vitesse" : vitesse, @"altitude" : altitude} success:success failure:failure];
+    [request POSTrequest:@"location.php" withParameters:@{@"idtraject" : idtraject, @"long" : longitude, @"lat" : latitude, @"vitesse" : vitesse, @"altitude" : altitude} success:success failure:failure];
 
 }
 

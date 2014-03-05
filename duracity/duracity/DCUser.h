@@ -16,15 +16,10 @@
 @property (nonatomic,strong) NSString *name;
 @property (nonatomic,strong) NSString *longitude;
 @property (nonatomic,strong) NSString *latitude;
+@property (nonatomic,strong) NSString *vitesse;
+@property (nonatomic,strong) NSString *altitude;
 
 - (void)fillWithDictionary:(NSDictionary *)dico;
-
--(void)setIdTraject:(NSString *)idTraject;
-
-- (NSString*)getUserId;
-- (NSString*)getUserName;
-- (NSString*)getUserLong;
-- (NSString*)getUserLat;
 
 +(DCUser*)currentUser;
 

@@ -31,7 +31,7 @@
     
     self.trackService = [[DCTrackService alloc] init];
     _clickCounter = YES;
-
+    self.userLoc = [[DCLocationService alloc] init];
     
 }
 
@@ -42,26 +42,27 @@
     
     /******** Check how times user pressed requestEvent **********/
     
-    //if (_clickCounter) {
+    if (_clickCounter) {
         [self.trackService setBeginTrajectWithId:idUser success:^(NSDictionary *datas){
             
             [[DCUser currentUser] setIdTraject:[datas objectForKey:@"idtraject"]];
-            //_clickCounter = NO;
+            _clickCounter = NO;
             //self.traceme.backgroundColor = [UIColor greenColor];
+            
+            NSLog(@"%@",datas);
         } failure:^(NSError *error) {
-            
             NSLog(@"%@",error);
-            
         }];
-//    }else{
-//        NSString *idtraject = [[DCUser currentUser] idTraject];
-//        [self.trackService setEndTrajectWithIdtraject:idtraject success:^{
-//            // Change color button
-//            _clickCounter = YES;
-//        } failure:^(NSError *error) {
-//            NSLog(@"%@",error);
-//        }];
-//    }
+    }else{
+        NSString *idtraject = [[DCUser currentUser] idTraject];
+        [self.trackService setEndTrajectWithIdtraject:idtraject success:^(NSDictionary *datas){
+            // Change color button
+           _clickCounter = YES;
+            NSLog(@"%@",datas);
+        } failure:^(NSError *error) {
+            NSLog(@"%@",error);
+        }];
+    }
     
     /***********************************************************/
     
