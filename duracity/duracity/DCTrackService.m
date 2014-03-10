@@ -14,6 +14,7 @@
 -(void)loginWithLoginAndPassword:(NSString *)login password:(NSString *)password success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure{
 
     DCRequests *request = [[DCRequests alloc]init];
+    
     [request POSTrequest:@"login.php" withParameters:@{@"login" : login, @"mdp" : password} success:success failure:failure];
     
 }
@@ -21,19 +22,24 @@
 -(void)setBeginTrajectWithId:(NSString *)iduser success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure{
 
     DCRequests *request = [[DCRequests alloc]init];
+    
     [request POSTrequest:@"traject.php" withParameters:@{@"id" : iduser} success:success failure:failure];
 
 }
 
 -(void)setEndTrajectWithIdtraject:(NSString *)idtraject success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure{
+    
     DCRequests *request = [[DCRequests alloc]init];
+    
     [request POSTrequest:@"traject.php" withParameters:@{@"idtraject" : idtraject} success:success failure:failure];
 }
 
 
--(void)UpdateLocvitaltWithIdtraject:(NSString *)idtraject long:(NSString *)longitude lat:(NSString *)latitude vit:(NSString *)vitesse alt:(NSString *)altitude success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure{
+-(void)UpdateLocvitaltWithIdtraject:(NSString *)idtraject long:(NSString *)longitude lat:(NSString *)latitude vit:(NSString *)vitesse success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure{
+    
     DCRequests *request = [[DCRequests alloc]init];
-    [request POSTrequest:@"location.php" withParameters:@{@"idtraject" : idtraject, @"long" : longitude, @"lat" : latitude, @"vitesse" : vitesse, @"altitude" : altitude} success:success failure:failure];
+    
+    [request POSTrequest:@"location.php" withParameters:@{@"idtraject" : idtraject, @"long" : longitude, @"lat" : latitude, @"vitesse" : vitesse} success:success failure:failure];
 
 }
 

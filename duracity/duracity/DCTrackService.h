@@ -17,6 +17,6 @@
 
 -(void)setEndTrajectWithIdtraject:(NSString *)idtraject success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure;
 
--(void)UpdateLocvitaltWithIdtraject:(NSString *)idtraject long:(NSString *)longitude lat:(NSString *)latitude vit:(NSString *)vitesse alt:(NSString *)altitude success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure;
+-(void)UpdateLocvitaltWithIdtraject:(NSString *)idtraject long:(NSString *)longitude lat:(NSString *)latitude vit:(NSString *)vitesse success:(DCRequestsSuccess)success failure:(DCRequestsFailure)failure;
 
 @end

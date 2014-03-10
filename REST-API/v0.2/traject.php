@@ -8,7 +8,6 @@
     if (!empty($_POST) && isset($_POST["id"])) // Début de trajet avec id de l'utilisateur, un timestamp automatique créé l'heure de début
     {
 	    $iduser = $_POST['id'];
-	    $database -> connexion();
 	    $datas = $database -> reqBeginTraject($iduser);
         
         $json = array( 'idtraject' => $datas );
@@ -21,11 +20,13 @@
 	    $iduser = $_POST['idtraject'];
 	    $time = date("H:i:s");
 	    	
-	    $database -> connexion();
+	    //$database -> connexion();
 	    $datas = $database -> reqEndTraject($iduser, $time);
         
-        $json = array( $datas );
-        $jsonstring = json_encode($json);
+        $jsonstring = json_encode(array( 
+        	"status" => $datas 
+        ));
+        
         header('Content-Type: application/json; charset=utf-8');
         echo $jsonstring;
         

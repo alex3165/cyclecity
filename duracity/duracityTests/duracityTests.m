@@ -7,6 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "DCTrackService.h"
+#import "DCUser.h"
 
 @interface duracityTests : XCTestCase
 
@@ -28,7 +30,8 @@
 
 - (void)testExample
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    //NSDictionary *userinfos = [[DCUser currentUser] getUserForUpdateLoc];
+    
 }
 
 @end

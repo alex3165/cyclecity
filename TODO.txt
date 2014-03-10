@@ -3,26 +3,33 @@ TODO
 
 IN PROGRESS ------------------------
 
-- (P5) (API Keolis) Interogation API Keolis dans processing : ./p5/rendu/request.pde
+- (P5) Requêtes GET keolis + personal server : ./p5/rendu/request.pde
 
-- (IOS) Singleton DCUser, méthode GetUser
+- (DATAS) Relève des données des cyclistes
 
 
 
 QUEUE ---------------------
 
-- (API) Endpoint Traject
-
-- (API) Endpoint location
+- (WEB) Simple page web pour expliquer comment fonctionne l’app IOS et proposer de la télécharger.
 
 - (P5) Classe pour stocker les données sur les stations de vélo
 
+- (P5) Class cyclist.pde pour stocker les infos de l’utilisateur (loc/vitesse/trajet)
 
 
 DONE -------------------------
+
+- (IOS) Singleton DCUser, méthode GetUser
 
 - (DESIGN) Prototype map
 
 - (DESIGN) UI de l'app IOS
 
-- (API) Endpoint Login
+- (API / IOS) Endpoint Login
+
+- (API / IOS) Endpoint Traject
+
+- (API / IOS) Endpoint location
+
+- (API / P5) Endpoint getinfos

@@ -17,9 +17,10 @@
 @property (nonatomic,strong) NSString *longitude;
 @property (nonatomic,strong) NSString *latitude;
 @property (nonatomic,strong) NSString *vitesse;
-@property (nonatomic,strong) NSString *altitude;
+//@property (nonatomic,strong) NSString *altitude;
 
 - (void)fillWithDictionary:(NSDictionary *)dico;
+- (NSDictionary *) getUserForUpdateLoc;
 
 +(DCUser*)currentUser;
 

@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-
 #import "DCUser.h"
 #import "DCTrackService.h"
-#import "DCLocationService.h"
+#import <CoreLocation/CoreLocation.h>
 
 @interface DCViewController : UIViewController
 
+@property(nonatomic,strong) CLLocationManager* locationManager;
 @property (nonatomic, strong) DCTrackService *trackService;
 @property (weak, nonatomic) IBOutlet UIButton *traceme;
-@property (nonatomic, strong) DCLocationService *userLoc;
+@property (weak, nonatomic) IBOutlet UITableView *tableInfos;
 
 @end

@@ -9,9 +9,9 @@ import de.fhpotsdam.unfolding.geo.*;
 import de.fhpotsdam.unfolding.utils.*; 
 import de.fhpotsdam.unfolding.marker.*; 
 import processing.net.*; 
+import de.bezier.data.sql.*; 
 import java.io.*; 
 import java.util.*; 
-import de.bezier.data.sql.*; 
 
 import org.apache.http.*; 
 import org.apache.http.impl.io.*; 
@@ -87,6 +87,8 @@ public class rendu extends PApplet {
 
 // import org.json.*;
 
+// import for SQLite JDBC : storage map
+
 
 
 
@@ -100,20 +102,22 @@ Location myloc;
 /********* For Requests *********/
 JSONObject datasJsonobject;
 
+int currentsecond;
+
+Requests requests = new Requests();
+
 public void setup() {
-	size(800, 600, P3D);
-
+	size(1000, 800, P3D);
+	//requests.getBikeStation(this);
+	requests.isLocationAtTime(this,"13:46",1);
 	/************** UNFOLDING PART ***********/
-
 	String tilesStr = sketchPath("data/Alexandre.mbtiles");
 	map = new UnfoldingMap(this,new MBTilesMapProvider(tilesStr));
     MapUtils.createDefaultEventDispatcher(this, map);
-    map.setZoomRange(12, 16);
-    map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 12);
-
+    map.setZoomRange(13, 16);
+    map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 13);
     /*****************************/
 
-    GetBikeStation(); // Fonction pour affichage des stations de v\u00e9lo de la ville de Rennes
 }
 
 public void draw() {
@@ -121,76 +125,95 @@ public void draw() {
 	myloc = new Location(48.1134750f, -1.6757080f);
 	mymarker = new SimplePointMarker(myloc);
 
-	map.addMarkers(mymarker);
+	//map.addMarkers(mymarker);
 	background(255);
-	stroke(255);
-	line(width/2, height/2, 0, width/2, height/2, 200);
+	map.draw();
+	/* 3d line */
+	// stroke(255);
+	// line(width/2, height/2, 0, width/2, height/2, 200);
+	//ExecuteEachSecondChange();
+
 	camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
-	//map.draw();
+
 }
 
-
-class VelocityMySQL {
-
-	MySQL dbconnection;
-	 //= new MySQL(this,"db511651757.db.1and1.com","db511651757","dbo511651757","12ldhbh07");
-	String host, database, user, pass;
-	PApplet applet;
-
-	VelocityMySQL (PApplet applet) {
-		this.applet = applet;
-		host = "db511651757.db.1and1.com";
-		database = "db511651757";
-		user ="dbo511651757";
-		pass = "12ldhbh07";
-	}
-
-	public void connection() {
-		dbconnection = new MySQL(applet, host, database, user, pass);
-		//println(host+" "+database);
-	}
-
-	public void getTrajectWithUser(){
-		connection();
-		// if ( dbconnection.connect() )
-	 //    {
-
-	 //        // Faire la requ\u00eate
-	 //        println("connexion successed");
-	 //        // dbconnection.query( "SELECT * FROM file_uploads" );
-	 //        // while (dbconnection.next())
-	 //        // {
-	 //        //     String s = dbconnection.getString("name");
-	 //        //     int n = dbconnection.getInt("fuid");
-	 //        //     println(s + "   " + n);
-	 //        // }
-	 //    }
-	 //    else
-	 //    {
-	 //    	println("connexion failed");
-	 //        // connection failed !
-	 //    }
-	}
+public void ExecuteEachSecondChange(){
+  if (currentsecond != second()){
+      currentsecond = second();
+      println(hour()+":"+minute()+":"+second());
+  }
 }
-public void GetBikeStation() {
+class Cyclist {
 
-    Client c;
-    String data;
+ private String user;
+ private int idUser;
+ private int idTraject;
+ private String beginTraject;
+ private float[][] locations;
+ 
+	 public Cyclist (){
+	 	
+	 }
+}
+class Requests {
 
+    private String mainurl;
+    private String mainhost;
+    private String keolisurl;
+    private int port;
 
-    try {
-        c = new Client(this, "http://data.keolis-rennes.com/json/?version=2.0&key=8W28SF1V3D03O3V&cmd=getbikestations", 80);
-        c.write("GET / HTTP/1.0\r\n");
-        c.write("\r\n");    
-        // http://data.keolis-rennes.com/json/?version=2.0&key=8W28SF1V3D03O3V&cmd=getbikestations
-        if (c.available() > 0) {
-            data = c.readString();
-            println(data);
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
+    public Requests(){
+        mainurl = "http://kalyptusprod.fr/api/getinfos.php";
+        mainhost = "http://kalyptusprod.fr";
+        keolisurl = "http://data.keolis-rennes.com/json/?version=2.0&key=8W28SF1V3D03O3V&cmd=getbikestations";
+        port = 80;
     }
 
+
+    public void isLocationAtTime(PApplet parentclass, String usertime, int iduser){
+
+        String datas;
+        Client myserveur;
+        String finalurl = mainurl+"?iduser="+iduser+"&time="+usertime;
+        println(finalurl);
+        try {
+            myserveur = new Client (parentclass,mainurl,port);
+            myserveur.write("GET / HTTP/1.0\r\n");
+            myserveur.write("Host: "+mainhost+"\r\n");
+            myserveur.write("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36\r\n");
+            myserveur.write("\r\n");
+            if (myserveur.available() > 0) {
+                datas = myserveur.readString();
+                println(datas);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //return datas;
+    }
+
+    public void getBikeStation(PApplet parentclass) {
+
+        Client c;
+        String data;
+
+        try {
+            c = new Client(parentclass, keolisurl, port);
+            c.write("GET / HTTP/1.1\r\n");
+            c.write("Host: http://data.keolis-rennes.com\r\n");
+            c.write("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36\r\n");
+            c.write("\r\n");
+
+            if (c.available() > 0) {
+                data = c.readString();
+                println(data);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "rendu" };

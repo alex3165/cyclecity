@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		220451C018A4305100D6408D /* DCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 220451BE18A4305100D6408D /* DCViewController.m */; };
 		220451C118A4305100D6408D /* DCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 220451BF18A4305100D6408D /* DCViewController.xib */; };
 		22659DF5189EB11100E01227 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22659DF4189EB11100E01227 /* Foundation.framework */; };
 		22659DF7189EB11100E01227 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22659DF6189EB11100E01227 /* CoreGraphics.framework */; };
@@ -36,8 +35,8 @@
 		22DA835E18B28C1E0014CCA5 /* DCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835C18B28C1E0014CCA5 /* DCUser.m */; };
 		22DA836118B28D7B0014CCA5 /* DCRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA836018B28D7B0014CCA5 /* DCRequests.m */; };
 		22DA836218B28D7B0014CCA5 /* DCRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA836018B28D7B0014CCA5 /* DCRequests.m */; };
-		22E150BD18C543FF00CBA042 /* DCLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E150BC18C543FF00CBA042 /* DCLocationService.m */; };
-		22E150BE18C543FF00CBA042 /* DCLocationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E150BC18C543FF00CBA042 /* DCLocationService.m */; };
+		22E77D0018CA137D00A94A82 /* DCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E77CFF18CA137D00A94A82 /* DCViewController.m */; };
+		22E77D0118CA137D00A94A82 /* DCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E77CFF18CA137D00A94A82 /* DCViewController.m */; };
 		22FDC02418B7CCEB00F1F403 /* logo_ss-02.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FDC02318B7CCEB00F1F403 /* logo_ss-02.png */; };
 		22FDC02718B7CED900F1F403 /* DCLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FDC02618B7CED900F1F403 /* DCLoginView.m */; };
 		EA4DFBC3BE6B488B8CFA35FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E2D4716CFB4C03BA6B1303 /* libPods.a */; };
@@ -55,7 +54,6 @@
 
 /* Begin PBXFileReference section */
 		220451BD18A4305100D6408D /* DCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCViewController.h; sourceTree = "<group>"; };
-		220451BE18A4305100D6408D /* DCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCViewController.m; sourceTree = "<group>"; };
 		220451BF18A4305100D6408D /* DCViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DCViewController.xib; sourceTree = "<group>"; };
 		22659DF1189EB11100E01227 /* cyclecity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cyclecity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22659DF4189EB11100E01227 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -86,8 +84,7 @@
 		22DA835C18B28C1E0014CCA5 /* DCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCUser.m; sourceTree = "<group>"; };
 		22DA835F18B28D7B0014CCA5 /* DCRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRequests.h; sourceTree = "<group>"; };
 		22DA836018B28D7B0014CCA5 /* DCRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRequests.m; sourceTree = "<group>"; };
-		22E150BB18C543FF00CBA042 /* DCLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLocationService.h; sourceTree = "<group>"; };
-		22E150BC18C543FF00CBA042 /* DCLocationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLocationService.m; sourceTree = "<group>"; };
+		22E77CFF18CA137D00A94A82 /* DCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCViewController.m; sourceTree = "<group>"; };
 		22FDC02318B7CCEB00F1F403 /* logo_ss-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo_ss-02.png"; path = "../../../../Master Rennes/cours/smartcity S2/recherche_2/logo_ss-02.png"; sourceTree = "<group>"; };
 		22FDC02518B7CED900F1F403 /* DCLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLoginView.h; sourceTree = "<group>"; };
 		22FDC02618B7CED900F1F403 /* DCLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLoginView.m; sourceTree = "<group>"; };
@@ -129,7 +126,7 @@
 				22659E09189EB11100E01227 /* DCLogViewController.h */,
 				22659E0A189EB11100E01227 /* DCLogViewController.m */,
 				220451BD18A4305100D6408D /* DCViewController.h */,
-				220451BE18A4305100D6408D /* DCViewController.m */,
+				22E77CFF18CA137D00A94A82 /* DCViewController.m */,
 			);
 			name = controler;
 			sourceTree = "<group>";
@@ -239,8 +236,6 @@
 				22DA836018B28D7B0014CCA5 /* DCRequests.m */,
 				229933F918B915C000E08AB7 /* DCTrackService.h */,
 				229933FA18B915C000E08AB7 /* DCTrackService.m */,
-				22E150BB18C543FF00CBA042 /* DCLocationService.h */,
-				22E150BC18C543FF00CBA042 /* DCLocationService.m */,
 			);
 			name = services;
 			sourceTree = "<group>";
@@ -397,10 +392,9 @@
 				229933FB18B915C000E08AB7 /* DCTrackService.m in Sources */,
 				22659E0B189EB11100E01227 /* DCLogViewController.m in Sources */,
 				22659E05189EB11100E01227 /* AppDelegate.m in Sources */,
+				22E77D0018CA137D00A94A82 /* DCViewController.m in Sources */,
 				22DA836118B28D7B0014CCA5 /* DCRequests.m in Sources */,
 				22659E01189EB11100E01227 /* main.m in Sources */,
-				220451C018A4305100D6408D /* DCViewController.m in Sources */,
-				22E150BD18C543FF00CBA042 /* DCLocationService.m in Sources */,
 				22DA835D18B28C1E0014CCA5 /* DCUser.m in Sources */,
 				22FDC02718B7CED900F1F403 /* DCLoginView.m in Sources */,
 			);
@@ -411,9 +405,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				229933FC18B915C000E08AB7 /* DCTrackService.m in Sources */,
-				22E150BE18C543FF00CBA042 /* DCLocationService.m in Sources */,
 				22659E20189EB11100E01227 /* duracityTests.m in Sources */,
 				22DA835E18B28C1E0014CCA5 /* DCUser.m in Sources */,
+				22E77D0118CA137D00A94A82 /* DCViewController.m in Sources */,
 				22DA836218B28D7B0014CCA5 /* DCRequests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

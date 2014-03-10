@@ -5,7 +5,7 @@ class Database {
 private $dbh = '';
 
 
-public function connexion(){
+public function __construct(){ 
 	$info = parse_ini_file("config.ini");
 
 	$login = $info['login'];
@@ -83,7 +83,7 @@ public function reqEndTraject($idtraject, $time){
 		    'idtraject' => $idtraject
 	    ));
 	    
-	    $donnees = 'success adding end of traject'; 
+	    $donnees = 'success'; 
 	    $reqendtraject->closeCursor();
 	    
     }
@@ -97,19 +97,18 @@ public function reqEndTraject($idtraject, $time){
     return $donnees;
 }
 
-public function reqLocation($idtraject, $longitude, $latitude, $vitesse, $altitude){
+public function reqLocation($idtraject, $longitude, $latitude, $vitesse){
 
 	$donnees = '';
 
 	if(!empty($this -> dbh)){
 		
-		$req = $this -> dbh -> prepare ("INSERT INTO localisation (`idtrajet`,`long`,`lat`,`vitesse`,`altitude`) VALUES(:idtraject, :long, :lat, :vitesse, :altitude)");
+		$req = $this -> dbh -> prepare ("INSERT INTO localisation (`idtrajet`,`long`,`lat`,`vitesse`) VALUES(:idtraject, :long, :lat, :vitesse)");
         $req -> execute(array(
               'idtraject' => $idtraject,
               'long' => $longitude,
               'lat' => $latitude,
-              'vitesse' => $vitesse,
-              'altitude' => $altitude
+              'vitesse' => $vitesse
         ));
         
         $req->closeCursor();
@@ -119,6 +118,42 @@ public function reqLocation($idtraject, $longitude, $latitude, $vitesse, $altitu
 	}else{
 		$jsonstring = json_encode('erreur, il faut se connecter a la base de donnee');
         header('Content-Type: application/json; charset=utf-8');
+        echo $jsonstring;
+	}
+	
+	return $donnees;
+	
+}
+
+// Get id way(s) with 'iduser' and 'time' settings.
+public function getInfos($iduser,$time){
+
+	$donnees = '';
+
+	if(!empty($this -> dbh)){
+		
+		$req = $this -> dbh -> prepare ("SELECT DISTINCT `id` FROM `trajet` WHERE `id_user` = :iduser AND DATE_FORMAT(`debut`,'%H:%i') = :time");
+		// SELECT DISTINCT id FROM trajet WHERE id_user =1 AND DATE_FORMAT(  `debut` ,  '%H:%i' ) =  '18:42'
+        $req -> execute(array(
+        	"iduser" => $iduser,
+        	"time" => $time
+        ));
+        $trajet = $req->fetch();
+        //echo 'test';
+        if(!empty($trajet)){
+	        $req2 = $this -> dbh -> prepare ("SELECT DISTINCT `lat`, `long`, `vitesse` FROM `localisation` WHERE `idtrajet` = :idtrajet LIMIT 0,50");
+	        $req2 -> execute(array("idtrajet" => $trajet['id']));
+	        $donnees = $req2->fetchAll();
+	        //print_r($donnees);
+        }else{
+	        $donnees = json_encode(array("status" => "no way at this time"));
+        }
+        // test $donnees et récupération de localisation si $donnees !empty puis return $donnee
+        $req->closeCursor();
+        
+	}else{
+		header('Content-Type: application/json; charset=utf-8');
+		$jsonstring = json_encode(array("status" => "error"));
         echo $jsonstring;
 	}
 	

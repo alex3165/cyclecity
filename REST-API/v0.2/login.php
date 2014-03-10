@@ -10,7 +10,6 @@
         $login = $_POST['login'];
         $mdp = $_POST['mdp'];
         
-        $database -> connexion();
         $datas = $database -> reqLogin($login);
         
         if ($login == $datas['login'] && $mdp == $datas['mdp']) {

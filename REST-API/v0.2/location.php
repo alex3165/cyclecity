@@ -11,13 +11,15 @@
 		$longitude = $_POST['long'];
 		$latitude = $_POST['lat'];
 		$vitesse = $_POST['vitesse'];
-		$altitude = $_POST['altitude'];
-		
-        $database -> connexion();
         
-        $datas = $database -> reqLocation($idtraject, $longitude, $latitude, $vitesse, $altitude);
+        $datas = $database -> reqLocation($idtraject, $longitude, $latitude, $vitesse);
         
-        $jsonstring = json_encode($datas);
+        $jsonstring = json_encode(array(
+        	
+        	"status" => $datas
+        
+        ));
+        
         header('Content-Type: application/json; charset=utf-8');
         echo $jsonstring;
         

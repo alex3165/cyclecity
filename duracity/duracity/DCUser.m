@@ -26,9 +26,14 @@ static DCUser* _currentUser = nil;
         
         self.iduser = [dico objectForKey:@"id"];
         self.name = [dico objectForKey:@"name"];
-//        self.longitude = [dico objectForKey:@"long"];
-//        self.latitude = [dico objectForKey:@"lat"];
 
+}
+
+- (NSDictionary *) getUserForUpdateLoc{
+    
+    NSDictionary *userSetting = [NSDictionary dictionaryWithObjectsAndKeys:self.idTraject,@"idTraject",self.longitude,@"longitude",self.latitude,@"latitude",self.vitesse,@"vitesse", nil];
+    
+    return userSetting;
 }
 
 
