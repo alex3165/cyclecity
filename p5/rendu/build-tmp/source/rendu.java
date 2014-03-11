@@ -97,10 +97,10 @@ public class rendu extends PApplet {
 UnfoldingMap map;
 MBTilesMapProvider mytiles;
 SimplePointMarker mymarker;
-Location myloc;
+Location [] locations;
 
 /********* For Requests *********/
-JSONObject datasJsonobject;
+//JSONArray datas;
 
 int currentsecond;
 
@@ -109,6 +109,7 @@ Requests requests = new Requests();
 public void setup() {
 	size(1000, 800, P3D);
 	//requests.getBikeStation(this);
+	/* Pb :  */
 	requests.isLocationAtTime(this,"13:46",1);
 	/************** UNFOLDING PART ***********/
 	String tilesStr = sketchPath("data/Alexandre.mbtiles");
@@ -117,42 +118,67 @@ public void setup() {
     map.setZoomRange(13, 16);
     map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 13);
     /*****************************/
-
+    JSONArray object = parseJsonAsJSONArray();
+    runJSONArray(object);
 }
 
 public void draw() {
 
-	myloc = new Location(48.1134750f, -1.6757080f);
-	mymarker = new SimplePointMarker(myloc);
+	//myloc = new Location(48.1134750, -1.6757080);
+	//mymarker = new SimplePointMarker(myloc);
 
 	//map.addMarkers(mymarker);
-	background(255);
-	map.draw();
+	//background(255);
+	
 	/* 3d line */
 	// stroke(255);
 	// line(width/2, height/2, 0, width/2, height/2, 200);
-	//ExecuteEachSecondChange();
-
+	//---------------- executeEachSecondChange();
+	//---------------- map.draw();
 	camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
-
 }
 
-public void ExecuteEachSecondChange(){
+public void mouseMoved(){
+	
+}
+
+public void executeEachSecondChange(){
   if (currentsecond != second()){
       currentsecond = second();
       println(hour()+":"+minute()+":"+second());
   }
 }
+
+public JSONArray parseJsonAsJSONArray(){
+	JSONArray datas = loadJSONObject("test.json").getJSONArray("positions");
+	return datas;
+}
+
+public void runJSONArray(JSONArray datas){
+	
+	for (int i = 0; i < datas.size(); ++i) {
+		JSONObject position = datas.getJSONObject(i);
+		println(i+" "+position);
+	}
+
+}
 class Cyclist {
 
- private String user;
- private int idUser;
- private int idTraject;
- private String beginTraject;
- private float[][] locations;
+ private String username;
+ private int userid;
+ private int tripid;
+ private String tripbegining;
+ private Location[] locations;
  
-	 public Cyclist (){
-	 	
+	 public Cyclist (String username, int userid){
+	 	this.userid = userid;
+	 	this.username = username;
+	 }
+
+	 public void setNewTraject(int tripid, String tripbegining, Location[] locations){
+	 	this.tripid = tripid;
+	 	this.tripbegining = tripbegining;
+	 	this.locations = locations;
 	 }
 }
 class Requests {
@@ -177,7 +203,7 @@ class Requests {
         String finalurl = mainurl+"?iduser="+iduser+"&time="+usertime;
         println(finalurl);
         try {
-            myserveur = new Client (parentclass,mainurl,port);
+            myserveur = new Client (parentclass,finalurl,port);
             myserveur.write("GET / HTTP/1.0\r\n");
             myserveur.write("Host: "+mainhost+"\r\n");
             myserveur.write("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36\r\n");

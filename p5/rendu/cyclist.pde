@@ -1,12 +1,19 @@
 class Cyclist {
 
- private String user;
- private int idUser;
- private int idTraject;
- private String beginTraject;
- private float[][] locations;
+ private String username;
+ private int userid;
+ private int tripid;
+ private String tripbegining;
+ private Location[] locations;
  
-	 public Cyclist (){
-	 	
+	 public Cyclist (String username, int userid){
+	 	this.userid = userid;
+	 	this.username = username;
+	 }
+
+	 public void setNewTraject(int tripid, String tripbegining, Location[] locations){
+	 	this.tripid = tripid;
+	 	this.tripbegining = tripbegining;
+	 	this.locations = locations;
 	 }
 }

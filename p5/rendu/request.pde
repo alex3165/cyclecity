@@ -20,7 +20,7 @@ class Requests {
         String finalurl = mainurl+"?iduser="+iduser+"&time="+usertime;
         println(finalurl);
         try {
-            myserveur = new Client (parentclass,mainurl,port);
+            myserveur = new Client (parentclass,finalurl,port);
             myserveur.write("GET / HTTP/1.0\r\n");
             myserveur.write("Host: "+mainhost+"\r\n");
             myserveur.write("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36\r\n");
