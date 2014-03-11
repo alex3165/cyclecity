@@ -20,15 +20,15 @@ SimplePointMarker mymarker;
 Location [] locations;
 
 int currentsecond;
-
+Client test;
 Requests requests = new Requests();
+
 
 void setup() {
 	size(1000, 800, P3D);
-	//requests.getBikeStation(this);
 
-	/* Error : java.net.UnknownHostException: http://kalyptusprod.fr/api/getinfos.php?iduser=1&time=13:46 */
-	requests.isLocationAtTime(this,"13:46",1);
+	test = requests.getUsers(this);
+	
 
 	/************** UNFOLDING PART ***********/
 	String tilesStr = sketchPath("data/Alexandre.mbtiles");
@@ -37,13 +37,18 @@ void setup() {
     map.setZoomRange(13, 16);
     map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 13);
     /*****************************/
-    
-    JSONArray object = parseJsonAsJSONArray();
+
+    JSONArray object = parseJsonAsJSONArray("test.json","positions");
     //runJSONArray(object);
 }
 
 void draw() {
-
+	
+	if (test.available() > 0) {
+        String datas = test.readString();
+        println(datas);
+        //JSONArray test = loadJSONObject(datas).getJSONArray("1");
+    }
 	//myloc = new Location(48.1134750, -1.6757080);
 	//mymarker = new SimplePointMarker(myloc);
 
@@ -69,8 +74,8 @@ void executeEachSecondChange(){
   }
 }
 
-JSONArray parseJsonAsJSONArray(){
-	JSONArray datas = loadJSONObject("test.json").getJSONArray("positions");
+JSONArray parseJsonAsJSONArray(String jsonString, String selectTable){
+	JSONArray datas = loadJSONObject(jsonString).getJSONArray(selectTable);
 	return datas;
 }
 
