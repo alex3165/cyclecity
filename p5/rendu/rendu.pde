@@ -23,9 +23,11 @@ int currentsecond;
 Client test;
 Requests requests = new Requests();
 
+Location startLocation, endLocation, startLocation2, endLocation2;
+SimpleLinesMarker connectionMarker, connectionMarker2;
 
 void setup() {
-	size(1000, 800, P3D);
+	size(1000, 800, OPENGL);
 
 	test = requests.getUsers(this);
 	
@@ -40,6 +42,12 @@ void setup() {
 
     JSONArray object = parseJsonAsJSONArray("test.json","positions");
     //runJSONArray(object);
+    startLocation = new Location(48.1138, -1.67773);
+	endLocation = new Location(48.1087, -1.69524);
+	connectionMarker = new SimpleLinesMarker(startLocation, endLocation);
+    startLocation2 = new Location(48.1191, -1.70214);
+	endLocation2 = new Location(48.1086, -1.69462);
+	connectionMarker2 = new SimpleLinesMarker(startLocation2, endLocation2);
 }
 
 void draw() {
@@ -47,20 +55,23 @@ void draw() {
 	if (test.available() > 0) {
         String datas = test.readString();
         println(datas);
-        //JSONArray test = loadJSONObject(datas).getJSONArray("1");
+        JSONObject json = loadJSONObject(datas);
+        println(json);
     }
 	//myloc = new Location(48.1134750, -1.6757080);
 	//mymarker = new SimplePointMarker(myloc);
 
-	//map.addMarkers(mymarker);
-	//background(255);
+	background(255);
 	
 	/* 3d line */
 	// stroke(255);
 	// line(width/2, height/2, 0, width/2, height/2, 200);
 	//---------------- executeEachSecondChange();
-	//---------------- map.draw();
-	camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
+	//map.draw();
+	fill(255);
+	// map.addMarkers(connectionMarker);
+	// map.addMarkers(connectionMarker2);
+	//camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
 }
 
 void mouseMoved(){
