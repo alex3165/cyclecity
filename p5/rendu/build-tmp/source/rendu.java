@@ -9,8 +9,8 @@ import de.fhpotsdam.unfolding.geo.*;
 import de.fhpotsdam.unfolding.utils.*; 
 import de.fhpotsdam.unfolding.marker.*; 
 import processing.net.*; 
+import http.requests.*; 
 import de.bezier.data.sql.*; 
-import java.io.*; 
 import java.util.*; 
 
 import org.apache.http.*; 
@@ -85,13 +85,13 @@ public class rendu extends PApplet {
 
 
 
-// import org.json.*;
 
+ // Shiffman lib for http requests
 
 // import for SQLite JDBC : storage map
 
 
-
+// import java.io.*;
 
 
 /********* For Map *********/
@@ -100,18 +100,19 @@ MBTilesMapProvider mytiles;
 SimplePointMarker mymarker;
 Location [] locations;
 
-int currentsecond;
-Client test;
-Requests requests = new Requests();
-
+int currentsecond, currentminute;
+int nbmarkertodisplay;
 Location startLocation, endLocation, startLocation2, endLocation2;
 SimpleLinesMarker connectionMarker, connectionMarker2;
 
-public void setup() {
-	size(1000, 800, OPENGL);
 
-	test = requests.getUsers(this);
-	
+JSONObject users;
+
+Cyclist [] cyclist;
+
+
+public void setup() {
+	size(1000, 800, P3D);
 
 	/************** UNFOLDING PART ***********/
 	String tilesStr = sketchPath("data/Alexandre.mbtiles");
@@ -120,138 +121,168 @@ public void setup() {
     map.setZoomRange(13, 16);
     map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 13);
     /*****************************/
+	getUsers();
 
-    JSONArray object = parseJsonAsJSONArray("test.json","positions");
-    //runJSONArray(object);
-    startLocation = new Location(48.1138f, -1.67773f);
-	endLocation = new Location(48.1087f, -1.69524f);
-	connectionMarker = new SimpleLinesMarker(startLocation, endLocation);
-    startLocation2 = new Location(48.1191f, -1.70214f);
-	endLocation2 = new Location(48.1086f, -1.69462f);
-	connectionMarker2 = new SimpleLinesMarker(startLocation2, endLocation2);
 }
 
 public void draw() {
-	
-	if (test.available() > 0) {
-        String datas = test.readString();
-        println(datas);
-        JSONObject json = loadJSONObject(datas);
-        println(json);
-    }
-	//myloc = new Location(48.1134750, -1.6757080);
-	//mymarker = new SimplePointMarker(myloc);
-
+	executeEachSecondChange();
 	background(255);
-	
+
 	/* 3d line */
-	// stroke(255);
-	// line(width/2, height/2, 0, width/2, height/2, 200);
+	stroke(255);
+	line(width/2, height/2, 0, width/2, height/2, 200);
 	//---------------- executeEachSecondChange();
-	//map.draw();
+	map.draw();
 	fill(255);
-	// map.addMarkers(connectionMarker);
-	// map.addMarkers(connectionMarker2);
-	//camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
+	for (int i = 0; i < cyclist.length; ++i) {
+		cyclist[i].drawTrip();
+	}
+	camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
 }
 
 public void mouseMoved(){
 	
 }
 
+public void getUsers(){
+	try {
+		GetRequest getusers = new GetRequest("http://kalyptusprod.fr/api/getinfos.php?getusers=all");
+		getusers.send();
+		users = new JSONObject();
+		users = parseJSONObject(getusers.getContent());
+	} catch (Exception e) {
+		println(e);
+	}
+
+	cyclist = new Cyclist[users.size()];
+
+	for (int i = 0; i < cyclist.length; ++i) {
+		cyclist[i] = new Cyclist (users.getJSONObject(str(i)).getString("prenom"), PApplet.parseInt(users.getJSONObject(str(i)).getString("id")));
+		cyclist[i].getTripWithId();
+	}
+}
+
 public void executeEachSecondChange(){
+
   if (currentsecond != second()){
       currentsecond = second();
-      println(hour()+":"+minute()+":"+second());
+
   }
-}
 
-public JSONArray parseJsonAsJSONArray(String jsonString, String selectTable){
-	JSONArray datas = loadJSONObject(jsonString).getJSONArray(selectTable);
-	return datas;
-}
-
-public void runJSONArray(JSONArray datas){
-	
-	for (int i = 0; i < datas.size(); ++i) {
-		JSONObject position = datas.getJSONObject(i);
-		println(i+" "+position);
-	}
+  if (currentminute != minute()) {
+  	  currentminute = minute();
+  }
 
 }
 class Cyclist {
 
- private String username;
- private int userid;
- private int tripid;
- private String tripbegining;
- private Location[] locations;
- 
+  public String username;
+  public int userid;
+  public JSONObject datas;
+  public Trip [] usertrips;
+
 	 public Cyclist (String username, int userid){
 	 	this.userid = userid;
 	 	this.username = username;
 	 }
 
-	 public void setNewTraject(int tripid, String tripbegining, Location[] locations){
-	 	this.tripid = tripid;
-	 	this.tripbegining = tripbegining;
-	 	this.locations = locations;
+	 public void getTripWithId(){
+	 	try {
+			GetRequest getusers = new GetRequest("http://kalyptusprod.fr/api/getinfos.php?gettrips=all&iduser="+userid);
+			getusers.send();
+			datas = new JSONObject();
+			datas = parseJSONObject(getusers.getContent());
+			println("Trips : "+datas+" for user : "+userid);
+			
+			usertrips = new Trip[datas.size()];
+
+			for (int i = 0; i < usertrips.length; ++i) {
+				usertrips[i] = new Trip (PApplet.parseInt(datas.getJSONObject(str(i)).getString("id")), 
+										datas.getJSONObject(str(i)).getString("debut"),
+										datas.getJSONObject(str(i)).getString("fin"));
+
+				usertrips[i].getLocationForTrip(userid);
+			}
+		} catch (Exception e) {
+			println(e);
+		}
 	 }
+
+	 public void drawTrip(){
+	 	for (int i = 0; i < usertrips.length; ++i) {
+	 		for (int j = 0; j < usertrips[i].markerlength; ++j) {
+	 			map.addMarkers(usertrips[i].markers[j]);
+	 		}
+	 	}
+	 }
+}// fin de class
+public class ThreeLinesMaker extends SimpleLinesMarker {
+ 
+  public ThreeLinesMaker(Location startLocation,Location endLocation) {
+    super(startLocation, endLocation);
+  }
+ 
+  public void draw(PGraphics pg, List<MapPosition> mapPositions,int vit1, int vit2) {
+    	MapPosition from = mapPositions.get(0);
+		MapPosition to = mapPositions.get(1);
+		pg.line(from.x, from.y, vit1, to.x, to.y, vit2);
+  }
 }
-class Requests {
+class Trip {
 
-    private String server;
-    private String mainhost;
-    private String endpoint;
-    private String keolisurl;
-    private int port;
+    public int idtrip;
+    public String begintrip;
+    public String endtrip;
+	public JSONObject datas;
+    public Location [] locations;
+    public float [] vitesse;
+    public SimpleLinesMarker [] markers;
+    public int markerlength;
 
-    public Requests(){
-        this.endpoint = "/api/getinfos.php";
-        this.server = "kalyptusprod.fr";
-        this.mainhost = "www.kalyptusprod.fr";
-        this.port = 80;
+    public Trip(int idtrip, String begintrip, String endtrip){
+        this.idtrip = idtrip;
+        this.begintrip = begintrip;
+        this.endtrip = endtrip;
     }
 
-    public Client getUsers(PApplet parentclass){
+    public void getLocationForTrip(int userid){
+        try {
+        	println("http://kalyptusprod.fr/api/getinfos.php?iduser="+userid+"&time="+begintrip);
+            GetRequest getlocations = new GetRequest("http://kalyptusprod.fr/api/getinfos.php?iduser="+userid+"&time="+begintrip);
+            getlocations.send();
+            datas = new JSONObject();
+            datas = parseJSONObject(getlocations.getContent());
+            // if (datas.getJSONObject(str(i)).getString("lat")) {
+            	
+            // }
+            vitesse = new float[datas.size()];
+            locations = new Location[datas.size()];
 
-        Client myserveur = new Client (parentclass,this.server,this.port);
-        myserveur.write("GET "+this.endpoint+"?getusers=all HTTP/1.1\r\n");
-        myserveur.write("Host: "+this.mainhost+"\r\n");
-        myserveur.write("User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36\r\n");
-        myserveur.write("Accept: application/json\r\n");
-        myserveur.write("Accept-Language: en-us,en;q=0.5\r\n");
-        myserveur.write("Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\r\n");
-        myserveur.write("\r\n");
+            //println(datas.getJSONObject("0"));
 
-        return myserveur;
+            for (int i = 0; i < locations.length; ++i) {
+                locations [i] = new Location (PApplet.parseFloat(datas.getJSONObject(str(i)).getString("lat")),PApplet.parseFloat(datas.getJSONObject(str(i)).getString("long")));
+                vitesse [i] = PApplet.parseFloat(datas.getJSONObject(str(i)).getString("vitesse"));
+            }
+
+        } catch (Exception e) {
+            println(e);
+        }
+        setMarkersWithLocations();
     }
 
-    public void isLocationAtTime(PApplet parentclass, String usertime, int iduser){
+	 public void setMarkersWithLocations(){
+	 	markers = new SimpleLinesMarker[locations.length/2];
+	 	int k = 0;
+	 	markerlength = locations.length/2;
+	 	for (int i = 0; i < locations.length - 1; i=i+2) {
+	 		markers[k] = new SimpleLinesMarker (locations[i],locations[i+1]);
+	 		markers[k].setColor(255);
+	 		k++;
+	 	}
+	 }
 
-    }
-
-    public void getBikeStation(PApplet parentclass) {
-
-        // Client c;
-        // String data;
-
-        // try {
-        //     c = new Client(parentclass, keolisurl, port);
-        //     c.write("GET / HTTP/1.1\r\n");
-        //     c.write("Host: http://data.keolis-rennes.com\r\n");
-        //     c.write("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.146 Safari/537.36\r\n");
-        //     c.write("\r\n");
-
-        //     if (c.available() > 0) {
-        //         data = c.readString();
-        //         println(data);
-        //     }
-        // } catch (Exception e) {
-        //     e.printStackTrace();
-        // }
-
-    }
 }
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "rendu" };

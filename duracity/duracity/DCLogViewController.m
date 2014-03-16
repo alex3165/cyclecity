@@ -25,6 +25,7 @@ DCViewController *secondController;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor DC_bgColor];
     
     // Initialisation de mes objets Requêtes et de mon service de tracking !
     UIImage *myimage = [UIImage imageNamed:@"logo_ss-02.png"];
@@ -33,6 +34,12 @@ DCViewController *secondController;
     
     self.trackService = [[DCTrackService alloc] init];
     secondController = [[DCViewController alloc]init];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
 }
 
 

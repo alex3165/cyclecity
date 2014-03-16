@@ -1,0 +1,21 @@
+body{
+	background-color: #ecf0f1;
+}
+
+#logo{
+	width: 180px;
+	padding: 30px 0;
+}
+
+#titre{
+	font-family: "proximanovasoft", sans-serif;
+	font-size: 3.4em;
+	letter-spacing: 6px;
+}
+
+
+
+@font-face {
+  font-family: "proximanovasoft";
+  src: url("fonts/proximanovasoft.ttf") format("truetype");
+}

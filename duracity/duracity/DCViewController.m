@@ -12,8 +12,6 @@
     @property (nonatomic, assign) BOOL clickCounter;
     @property (nonatomic,weak) NSMutableArray *successDatas;
     @property (nonatomic,retain) NSDateFormatter *formatter;
-    //@property (nonatomic,weak) NSCalendar *calendar;
-    //@property (nonatomic,weak) NSDateComponents *components;
 @end
 
 @implementation DCViewController
@@ -32,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationController.navigationItem.title = @"Cyclecity";
     
     self.locationManager = [[CLLocationManager alloc] init];
     self.formatter = [[NSDateFormatter alloc] init];
@@ -44,6 +43,12 @@
     [self.tableInfos numberOfRowsInSection:4];
     [self.formatter setDateFormat:@"hh:mm:ss a"];
 
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    //self.navigationController.navigationItem.title = @"Cyclecity";
 }
 
 

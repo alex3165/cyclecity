@@ -31,6 +31,9 @@
 		22A7632318C5F66A00EE28F6 /* logo80x80.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A7631E18C5F66900EE28F6 /* logo80x80.png */; };
 		22A7632418C5F66A00EE28F6 /* logo120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A7631F18C5F66A00EE28F6 /* logo120x120.png */; };
 		22A7632518C5F66A00EE28F6 /* logo120x120.png in Resources */ = {isa = PBXBuildFile; fileRef = 22A7631F18C5F66A00EE28F6 /* logo120x120.png */; };
+		22D9A8F118D25D4B00C1E668 /* UIColor+colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D9A8F018D25D4B00C1E668 /* UIColor+colors.m */; };
+		22D9A8F218D25D4B00C1E668 /* UIColor+colors.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D9A8F018D25D4B00C1E668 /* UIColor+colors.m */; };
+		22D9A8F318D2605300C1E668 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22659E06189EB11100E01227 /* Main.storyboard */; };
 		22DA835D18B28C1E0014CCA5 /* DCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835C18B28C1E0014CCA5 /* DCUser.m */; };
 		22DA835E18B28C1E0014CCA5 /* DCUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA835C18B28C1E0014CCA5 /* DCUser.m */; };
 		22DA836118B28D7B0014CCA5 /* DCRequests.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DA836018B28D7B0014CCA5 /* DCRequests.m */; };
@@ -38,7 +41,6 @@
 		22E77D0018CA137D00A94A82 /* DCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E77CFF18CA137D00A94A82 /* DCViewController.m */; };
 		22E77D0118CA137D00A94A82 /* DCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 22E77CFF18CA137D00A94A82 /* DCViewController.m */; };
 		22FDC02418B7CCEB00F1F403 /* logo_ss-02.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FDC02318B7CCEB00F1F403 /* logo_ss-02.png */; };
-		22FDC02718B7CED900F1F403 /* DCLoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22FDC02618B7CED900F1F403 /* DCLoginView.m */; };
 		EA4DFBC3BE6B488B8CFA35FC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 51E2D4716CFB4C03BA6B1303 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -80,14 +82,14 @@
 		22A7631D18C5F66900EE28F6 /* logo58x58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo58x58.png; sourceTree = "<group>"; };
 		22A7631E18C5F66900EE28F6 /* logo80x80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo80x80.png; sourceTree = "<group>"; };
 		22A7631F18C5F66A00EE28F6 /* logo120x120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo120x120.png; sourceTree = "<group>"; };
+		22D9A8EF18D25D4B00C1E668 /* UIColor+colors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+colors.h"; sourceTree = "<group>"; };
+		22D9A8F018D25D4B00C1E668 /* UIColor+colors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+colors.m"; sourceTree = "<group>"; };
 		22DA835B18B28C1E0014CCA5 /* DCUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCUser.h; sourceTree = "<group>"; };
 		22DA835C18B28C1E0014CCA5 /* DCUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCUser.m; sourceTree = "<group>"; };
 		22DA835F18B28D7B0014CCA5 /* DCRequests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCRequests.h; sourceTree = "<group>"; };
 		22DA836018B28D7B0014CCA5 /* DCRequests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCRequests.m; sourceTree = "<group>"; };
 		22E77CFF18CA137D00A94A82 /* DCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCViewController.m; sourceTree = "<group>"; };
 		22FDC02318B7CCEB00F1F403 /* logo_ss-02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "logo_ss-02.png"; path = "../../../../Master Rennes/cours/smartcity S2/recherche_2/logo_ss-02.png"; sourceTree = "<group>"; };
-		22FDC02518B7CED900F1F403 /* DCLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCLoginView.h; sourceTree = "<group>"; };
-		22FDC02618B7CED900F1F403 /* DCLoginView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCLoginView.m; sourceTree = "<group>"; };
 		51E2D4716CFB4C03BA6B1303 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		697CD770E35B49C182F3020A /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,12 +178,12 @@
 		22659DFA189EB11100E01227 /* duracity */ = {
 			isa = PBXGroup;
 			children = (
+				22FDC02818B7CEEA00F1F403 /* view */,
 				22A7631C18C5F1B100EE28F6 /* ressources */,
 				22DA835A18B28BF30014CCA5 /* services */,
 				223F165418A82E43008FD859 /* model */,
 				223F165318A82E35008FD859 /* controler */,
 				22659E06189EB11100E01227 /* Main.storyboard */,
-				22FDC02818B7CEEA00F1F403 /* view */,
 				220451BF18A4305100D6408D /* DCViewController.xib */,
 				22659E0C189EB11100E01227 /* Images.xcassets */,
 				22659DFB189EB11100E01227 /* Supporting Files */,
@@ -243,8 +245,8 @@
 		22FDC02818B7CEEA00F1F403 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				22FDC02518B7CED900F1F403 /* DCLoginView.h */,
-				22FDC02618B7CED900F1F403 /* DCLoginView.m */,
+				22D9A8EF18D25D4B00C1E668 /* UIColor+colors.h */,
+				22D9A8F018D25D4B00C1E668 /* UIColor+colors.m */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -298,6 +300,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "RIEUX Alexandre";
 				TargetAttributes = {
+					22659DF0189EB11000E01227 = {
+						DevelopmentTeam = 6Z76J8RM7Y;
+					};
 					22659E11189EB11100E01227 = {
 						TestTargetID = 22659DF0189EB11000E01227;
 					};
@@ -343,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22659E1E189EB11100E01227 /* InfoPlist.strings in Resources */,
+				22D9A8F318D2605300C1E668 /* Main.storyboard in Resources */,
 				22A7632518C5F66A00EE28F6 /* logo120x120.png in Resources */,
 				22A7632118C5F66A00EE28F6 /* logo58x58.png in Resources */,
 				22A7632318C5F66A00EE28F6 /* logo80x80.png in Resources */,
@@ -394,9 +400,9 @@
 				22659E05189EB11100E01227 /* AppDelegate.m in Sources */,
 				22E77D0018CA137D00A94A82 /* DCViewController.m in Sources */,
 				22DA836118B28D7B0014CCA5 /* DCRequests.m in Sources */,
+				22D9A8F118D25D4B00C1E668 /* UIColor+colors.m in Sources */,
 				22659E01189EB11100E01227 /* main.m in Sources */,
 				22DA835D18B28C1E0014CCA5 /* DCUser.m in Sources */,
-				22FDC02718B7CED900F1F403 /* DCLoginView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,6 +413,7 @@
 				229933FC18B915C000E08AB7 /* DCTrackService.m in Sources */,
 				22659E20189EB11100E01227 /* duracityTests.m in Sources */,
 				22DA835E18B28C1E0014CCA5 /* DCUser.m in Sources */,
+				22D9A8F218D25D4B00C1E668 /* UIColor+colors.m in Sources */,
 				22E77D0118CA137D00A94A82 /* DCViewController.m in Sources */,
 				22DA836218B28D7B0014CCA5 /* DCRequests.m in Sources */,
 			);
@@ -526,10 +533,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 697CD770E35B49C182F3020A /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "duracity/duracity-Prefix.pch";
 				INFOPLIST_FILE = "duracity/duracity-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -538,10 +548,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 697CD770E35B49C182F3020A /* Pods.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "duracity/duracity-Prefix.pch";
 				INFOPLIST_FILE = "duracity/duracity-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
