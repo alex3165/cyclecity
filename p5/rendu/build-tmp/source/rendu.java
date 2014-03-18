@@ -10,6 +10,7 @@ import de.fhpotsdam.unfolding.utils.*;
 import de.fhpotsdam.unfolding.marker.*; 
 import processing.net.*; 
 import http.requests.*; 
+import codeanticode.syphon.*; 
 import de.bezier.data.sql.*; 
 import java.util.*; 
 
@@ -88,6 +89,8 @@ public class rendu extends PApplet {
 
  // Shiffman lib for http requests
 
+ // syphon pour sortie vid\u00e9o
+
 // import for SQLite JDBC : storage map
 
 
@@ -110,35 +113,41 @@ JSONObject users;
 
 Cyclist [] cyclist;
 
+PGraphics canvas;
+SyphonServer server;
 
 public void setup() {
-	size(1000, 800, P3D);
+	size(displayWidth, displayHeight, P3D);
+	//canvas = createGraphics(displayWidth, displayHeight, P3D);
 
 	/************** UNFOLDING PART ***********/
 	String tilesStr = sketchPath("data/Alexandre.mbtiles");
 	map = new UnfoldingMap(this,new MBTilesMapProvider(tilesStr));
     MapUtils.createDefaultEventDispatcher(this, map);
-    map.setZoomRange(13, 16);
-    map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 13);
+    map.setZoomRange(12, 15);
+    map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 12.5f);
     /*****************************/
-	getUsers();
 
+    server = new SyphonServer(this, "Processing Syphon");
+
+	getUsers();
 }
 
 public void draw() {
+	//canvas.beginDraw();
 	executeEachSecondChange();
 	background(255);
-
-	/* 3d line */
 	stroke(255);
-	line(width/2, height/2, 0, width/2, height/2, 200);
-	//---------------- executeEachSecondChange();
+	//line(width/2, height/2, 0, width/2, height/2, 200);
 	map.draw();
 	fill(255);
 	for (int i = 0; i < cyclist.length; ++i) {
 		cyclist[i].drawTrip();
 	}
-	camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
+	//canvas.endDraw();
+	//image(canvas, 0, 0);
+	//server.sendImage(canvas);
+	//camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
 }
 
 public void mouseMoved(){
@@ -218,15 +227,20 @@ class Cyclist {
 	 }
 }// fin de class
 public class ThreeLinesMaker extends SimpleLinesMarker {
- 
-  public ThreeLinesMaker(Location startLocation,Location endLocation) {
+ 	
+  public float vitesse1;
+  public float vitesse2;
+
+  public ThreeLinesMaker(Location startLocation,Location endLocation,float vit1,float vit2) {
     super(startLocation, endLocation);
+    this.vitesse1 = vit1;
+    this.vitesse2 = vit2;
   }
  
-  public void draw(PGraphics pg, List<MapPosition> mapPositions,int vit1, int vit2) {
+  public void draw(PGraphics pg, List<MapPosition> mapPositions) {
     	MapPosition from = mapPositions.get(0);
 		MapPosition to = mapPositions.get(1);
-		pg.line(from.x, from.y, vit1, to.x, to.y, vit2);
+		pg.line(from.x, from.y, this.vitesse1, to.x, to.y, this.vitesse2);
   }
 }
 class Trip {
@@ -237,7 +251,8 @@ class Trip {
 	public JSONObject datas;
     public Location [] locations;
     public float [] vitesse;
-    public SimpleLinesMarker [] markers;
+    public SimpleLinesMarker [] markers; //public SimpleLinesMarker [] markers;
+    public ThreeLinesMaker [] threemarker; // option
     public int markerlength;
 
     public Trip(int idtrip, String begintrip, String endtrip){
@@ -273,13 +288,20 @@ class Trip {
     }
 
 	 public void setMarkersWithLocations(){
-	 	markers = new SimpleLinesMarker[locations.length/2];
+        markers = new SimpleLinesMarker[locations.length/2];
+	 	//markers = new ThreeLinesMaker[locations.length/2]; //markers = new SimpleLinesMarker[locations.length/2];
+        threemarker = new ThreeLinesMaker[locations.length/2];
 	 	int k = 0;
+        int vi = 1;
 	 	markerlength = locations.length/2;
 	 	for (int i = 0; i < locations.length - 1; i=i+2) {
 	 		markers[k] = new SimpleLinesMarker (locations[i],locations[i+1]);
+            //markers[k] = new ThreeLinesMaker (locations[i],locations[i+1],vitesse[vi-1],vitesse[i]); //markers[k] = new SimpleLinesMarker (locations[i],locations[i+1]);
 	 		markers[k].setColor(255);
 	 		k++;
+            if (vi != 1) {
+                vi++;
+            }
 	 	}
 	 }
 

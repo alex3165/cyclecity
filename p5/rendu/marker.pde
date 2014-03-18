@@ -1,9 +1,9 @@
 public class ThreeLinesMaker extends SimpleLinesMarker {
  	
-  public int vitesse1;
-  public int vitesse2;
+  public float vitesse1;
+  public float vitesse2;
 
-  public ThreeLinesMaker(Location startLocation,Location endLocation,int vit1,int vit2) {
+  public ThreeLinesMaker(Location startLocation,Location endLocation,float vit1,float vit2) {
     super(startLocation, endLocation);
     this.vitesse1 = vit1;
     this.vitesse2 = vit2;

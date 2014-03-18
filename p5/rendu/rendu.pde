@@ -7,6 +7,8 @@ import de.fhpotsdam.unfolding.marker.*;
 import processing.net.*;
 import http.requests.*; // Shiffman lib for http requests
 
+import codeanticode.syphon.*; // syphon pour sortie vidéo
+
 // import for SQLite JDBC : storage map
 import de.bezier.data.sql.*;
 
@@ -29,35 +31,41 @@ JSONObject users;
 
 Cyclist [] cyclist;
 
+PGraphics canvas;
+SyphonServer server;
 
 void setup() {
-	size(1000, 800, P3D);
+	size(displayWidth, displayHeight, P3D);
+	//canvas = createGraphics(displayWidth, displayHeight, P3D);
 
 	/************** UNFOLDING PART ***********/
 	String tilesStr = sketchPath("data/Alexandre.mbtiles");
 	map = new UnfoldingMap(this,new MBTilesMapProvider(tilesStr));
     MapUtils.createDefaultEventDispatcher(this, map);
-    map.setZoomRange(13, 16);
+    map.setZoomRange(12, 15);
     map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 13);
     /*****************************/
-	getUsers();
 
+    server = new SyphonServer(this, "Processing Syphon");
+
+	getUsers();
 }
 
 void draw() {
+	//canvas.beginDraw();
 	executeEachSecondChange();
 	background(255);
-
-	/* 3d line */
 	stroke(255);
-	line(width/2, height/2, 0, width/2, height/2, 200);
-	//---------------- executeEachSecondChange();
+	//line(width/2, height/2, 0, width/2, height/2, 200);
 	map.draw();
 	fill(255);
 	for (int i = 0; i < cyclist.length; ++i) {
 		cyclist[i].drawTrip();
 	}
-	camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
+	//canvas.endDraw();
+	//image(canvas, 0, 0);
+	//server.sendImage(canvas);
+	//camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
 }
 
 void mouseMoved(){
