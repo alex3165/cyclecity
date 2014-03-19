@@ -44,21 +44,19 @@ class Trip {
     }
 
 	 public void setMarkersWithLocations(){
-        markers = new SimpleLinesMarker[locations.length/2];
-	 	//markers = new ThreeLinesMaker[locations.length/2]; //markers = new SimpleLinesMarker[locations.length/2];
-        threemarker = new ThreeLinesMaker[locations.length/2];
+        markers = new SimpleLinesMarker[locations.length];
 	 	int k = 0;
-        int vi = 1;
-	 	markerlength = locations.length/2;
-	 	for (int i = 0; i < locations.length - 1; i=i+2) {
-	 		markers[k] = new SimpleLinesMarker (locations[i],locations[i+1]);
-            //markers[k] = new ThreeLinesMaker (locations[i],locations[i+1],vitesse[vi-1],vitesse[i]); //markers[k] = new SimpleLinesMarker (locations[i],locations[i+1]);
-	 		
+        int vi;
+	 	markerlength = locations.length;
+        println("length : "+locations.length);
+	 	for (int i = 0; i < locations.length; i++) {
+            println(locations[i]+" : "+i);
+            vi = i+1;
+            if (vi>=locations.length)
+                vi = locations.length-1;
+	 		markers[k] = new SimpleLinesMarker (locations[i],locations[vi]);
             markers[k].setColor(255);
 	 		k++;
-            if (vi != 1) {
-                vi++;
-            }
 	 	}
 	 }
 

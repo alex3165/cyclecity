@@ -16,7 +16,7 @@ class Cyclist {
 			getusers.send();
 			datas = new JSONObject();
 			datas = parseJSONObject(getusers.getContent());
-			println("Trips : "+datas+" for user : "+userid);
+			//println("Trips : "+datas+" for user : "+userid);
 			
 			usertrips = new Trip[datas.size()];
 

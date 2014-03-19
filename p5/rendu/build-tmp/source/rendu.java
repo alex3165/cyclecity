@@ -125,7 +125,7 @@ public void setup() {
 	map = new UnfoldingMap(this,new MBTilesMapProvider(tilesStr));
     MapUtils.createDefaultEventDispatcher(this, map);
     map.setZoomRange(12, 15);
-    map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 12.5f);
+    map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 13);
     /*****************************/
 
     server = new SyphonServer(this, "Processing Syphon");
@@ -202,7 +202,7 @@ class Cyclist {
 			getusers.send();
 			datas = new JSONObject();
 			datas = parseJSONObject(getusers.getContent());
-			println("Trips : "+datas+" for user : "+userid);
+			//println("Trips : "+datas+" for user : "+userid);
 			
 			usertrips = new Trip[datas.size()];
 
@@ -254,6 +254,7 @@ class Trip {
     public SimpleLinesMarker [] markers; //public SimpleLinesMarker [] markers;
     public ThreeLinesMaker [] threemarker; // option
     public int markerlength;
+    //public color tripcolor;
 
     public Trip(int idtrip, String begintrip, String endtrip){
         this.idtrip = idtrip;
@@ -288,20 +289,19 @@ class Trip {
     }
 
 	 public void setMarkersWithLocations(){
-        markers = new SimpleLinesMarker[locations.length/2];
-	 	//markers = new ThreeLinesMaker[locations.length/2]; //markers = new SimpleLinesMarker[locations.length/2];
-        threemarker = new ThreeLinesMaker[locations.length/2];
+        markers = new SimpleLinesMarker[locations.length];
 	 	int k = 0;
-        int vi = 1;
-	 	markerlength = locations.length/2;
-	 	for (int i = 0; i < locations.length - 1; i=i+2) {
-	 		markers[k] = new SimpleLinesMarker (locations[i],locations[i+1]);
-            //markers[k] = new ThreeLinesMaker (locations[i],locations[i+1],vitesse[vi-1],vitesse[i]); //markers[k] = new SimpleLinesMarker (locations[i],locations[i+1]);
-	 		markers[k].setColor(255);
+        int vi;
+	 	markerlength = locations.length;
+        println("length : "+locations.length);
+	 	for (int i = 0; i < locations.length; i++) {
+            println(locations[i]+" : "+i);
+            vi = i+1;
+            if (vi>=locations.length)
+                vi = locations.length-1;
+	 		markers[k] = new SimpleLinesMarker (locations[i],locations[vi]);
+            markers[k].setColor(255);
 	 		k++;
-            if (vi != 1) {
-                vi++;
-            }
 	 	}
 	 }
 
