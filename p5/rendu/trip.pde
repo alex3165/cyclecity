@@ -9,7 +9,9 @@ class Trip {
     public SimpleLinesMarker [] markers; //public SimpleLinesMarker [] markers;
     public ThreeLinesMaker [] threemarker; // option
     public int markerlength;
-    //public color tripcolor;
+    public color [] tripcolor = {#EBEBBC,#52E3AC,#F21D41};
+    public int indexcolor;
+    public float vit1,vit2;
 
     public Trip(int idtrip, String begintrip, String endtrip){
         this.idtrip = idtrip;
@@ -19,14 +21,12 @@ class Trip {
 
     public void getLocationForTrip(int userid){
         try {
+
         	println("http://kalyptusprod.fr/api/getinfos.php?iduser="+userid+"&time="+begintrip);
             GetRequest getlocations = new GetRequest("http://kalyptusprod.fr/api/getinfos.php?iduser="+userid+"&time="+begintrip);
             getlocations.send();
             datas = new JSONObject();
             datas = parseJSONObject(getlocations.getContent());
-            // if (datas.getJSONObject(str(i)).getString("lat")) {
-            	
-            // }
             vitesse = new float[datas.size()];
             locations = new Location[datas.size()];
 
@@ -44,6 +44,7 @@ class Trip {
     }
 
 	 public void setMarkersWithLocations(){
+        //threemarker = new ThreeLinesMaker[locations.length];
         markers = new SimpleLinesMarker[locations.length];
 	 	int k = 0;
         int vi;
@@ -54,8 +55,22 @@ class Trip {
             vi = i+1;
             if (vi>=locations.length)
                 vi = locations.length-1;
+            this.vit1 = map(vitesse[i], -2, 12, 0, 300);
+            //this.vit2 = map(vitesse[vi], -2, 12, 0, 300);
+            //println("vitesse 1 : "+vit1+"vitesse 2 : "+vit2);
+            if (this.vit1<70) {
+                indexcolor = 2; // rouge 
+            }else if (this.vit1>70 && this.vit1<100){
+                indexcolor = 1; // vert
+            }else if (this.vit1>100) {
+                indexcolor = 0; // jaune
+            }
+            //println("index : "+indexcolor);
+            // threemarker[k] = new ThreeLinesMaker (locations[i],locations[vi],this.vit1,this.vit2);
+            // threemarker[k].setColor(tripcolor[indexcolor]);
+            //println("vitesse à "+i+" : "+vitesse[i]);
 	 		markers[k] = new SimpleLinesMarker (locations[i],locations[vi]);
-            markers[k].setColor(255);
+            markers[k].setColor(tripcolor[indexcolor]);
 	 		k++;
 	 	}
 	 }

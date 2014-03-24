@@ -18,57 +18,54 @@ import java.util.*;
 /********* For Map *********/
 UnfoldingMap map;
 MBTilesMapProvider mytiles;
-SimplePointMarker mymarker;
-Location [] locations;
-
+//SimplePointMarker mymarker;
+//Location [] locations;
+int falsesecond, falseminute, falsehours;
 int currentsecond, currentminute;
 int nbmarkertodisplay;
-Location startLocation, endLocation, startLocation2, endLocation2;
-SimpleLinesMarker connectionMarker, connectionMarker2;
-
+//Location startLocation, endLocation, startLocation2, endLocation2;
+//SimpleLinesMarker connectionMarker, connectionMarker2;
 
 JSONObject users;
 
 Cyclist [] cyclist;
 
-PGraphics canvas;
-SyphonServer server;
-
 void setup() {
-	size(displayWidth, displayHeight, P3D);
-	//canvas = createGraphics(displayWidth, displayHeight, P3D);
+	size(displayWidth, displayHeight, OPENGL);
+	falsesecond = 0;
+	falseminute = 0;
+	falsehours = 16;
 
 	/************** UNFOLDING PART ***********/
 	String tilesStr = sketchPath("data/Alexandre.mbtiles");
 	map = new UnfoldingMap(this,new MBTilesMapProvider(tilesStr));
     MapUtils.createDefaultEventDispatcher(this, map);
-    map.setZoomRange(12, 15);
+    map.setZoomRange(13, 14);
     map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 13);
     /*****************************/
-
-    server = new SyphonServer(this, "Processing Syphon");
 
 	getUsers();
 }
 
 void draw() {
-	//canvas.beginDraw();
-	executeEachSecondChange();
-	background(255);
-	stroke(255);
-	//line(width/2, height/2, 0, width/2, height/2, 200);
+
+	//executeEachSecondChange();
+    background(255);
 	map.draw();
+	stroke(255);
 	fill(255);
-	for (int i = 0; i < cyclist.length; ++i) {
+	textSize(26);
+	text("Cyclecity", width/2, 100);
+    for (int i = 0; i < cyclist.length; ++i) {
 		cyclist[i].drawTrip();
+		//cyclist[i].;
 	}
-	//canvas.endDraw();
-	//image(canvas, 0, 0);
-	//server.sendImage(canvas);
+	executeEachSecondChange();
 	//camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
 }
 
 void mouseMoved(){
+	
 	
 }
 
@@ -90,10 +87,23 @@ void getUsers(){
 	}
 }
 
+void fakeTime(){
+	falseminute++;
+	if (falseminute>=60) {
+		falseminute = 0;
+		falsehours++;
+		if (falsehours>24) {
+			falsehours = 0;
+		}
+	}
+}
+
+
 void executeEachSecondChange(){
 
   if (currentsecond != second()){
       currentsecond = second();
+      fakeTime();
 
   }
 

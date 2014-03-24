@@ -4,6 +4,7 @@ class Cyclist {
   public int userid;
   public JSONObject datas;
   public Trip [] usertrips;
+  public String [][] debutrip;
 
 	 public Cyclist (String username, int userid){
 	 	this.userid = userid;
@@ -19,8 +20,10 @@ class Cyclist {
 			//println("Trips : "+datas+" for user : "+userid);
 			
 			usertrips = new Trip[datas.size()];
-
+			debutrip = new String[datas.size()][datas.size()];
 			for (int i = 0; i < usertrips.length; ++i) {
+				debutrip[i] = split(datas.getJSONObject(str(i)).getString("debut"),":");
+				//println(debutrip[i][0]);
 				usertrips[i] = new Trip (int(datas.getJSONObject(str(i)).getString("id")), 
 										datas.getJSONObject(str(i)).getString("debut"),
 										datas.getJSONObject(str(i)).getString("fin"));
@@ -36,7 +39,14 @@ class Cyclist {
 	 	for (int i = 0; i < usertrips.length; ++i) {
 	 		for (int j = 0; j < usertrips[i].markerlength; ++j) {
 	 			map.addMarkers(usertrips[i].markers[j]);
+	 			//map.addMarkers(usertrips[i].threemarker[j]);
 	 		}
 	 	}
-	 }
-}// fin de class
+	}
+
+	public int getBeginHours(){
+		for (int i = 0; i < usertrips.length; ++i) {
+	 		return int(usertrips[i].debutrip[i][0]);
+	 	}
+	}
+}
