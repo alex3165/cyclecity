@@ -10,7 +10,6 @@ import de.fhpotsdam.unfolding.utils.*;
 import de.fhpotsdam.unfolding.marker.*; 
 import processing.net.*; 
 import http.requests.*; 
-import codeanticode.syphon.*; 
 import de.bezier.data.sql.*; 
 import java.util.*; 
 
@@ -89,41 +88,37 @@ public class rendu extends PApplet {
 
  // Shiffman lib for http requests
 
- // syphon pour sortie vid\u00e9o
-
 // import for SQLite JDBC : storage map
 
 
-// import java.io.*;
 
 
 /********* For Map *********/
 UnfoldingMap map;
+//DebugDisplay debugDisplay;
 MBTilesMapProvider mytiles;
 //SimplePointMarker mymarker;
 //Location [] locations;
 int falsesecond, falseminute, falsehours;
 int currentsecond, currentminute;
-int nbmarkertodisplay;
-//Location startLocation, endLocation, startLocation2, endLocation2;
-//SimpleLinesMarker connectionMarker, connectionMarker2;
+//int nbmarkertodisplay;
 
 JSONObject users;
 
 Cyclist [] cyclist;
 
 public void setup() {
-	size(displayWidth, displayHeight, OPENGL);
+	size(displayWidth, displayHeight);
 	falsesecond = 0;
 	falseminute = 0;
 	falsehours = 16;
 
 	/************** UNFOLDING PART ***********/
-	String tilesStr = sketchPath("data/Alexandre.mbtiles");
+	String tilesStr = sketchPath("data/cyclecity.mbtiles");
 	map = new UnfoldingMap(this,new MBTilesMapProvider(tilesStr));
-    MapUtils.createDefaultEventDispatcher(this, map);
-    map.setZoomRange(13, 14);
+    map.setZoomRange(13, 13);
     map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 13);
+    MapUtils.createDefaultEventDispatcher(this, map);
     /*****************************/
 
 	getUsers();
@@ -131,24 +126,22 @@ public void setup() {
 
 public void draw() {
 
-	//executeEachSecondChange();
-    background(255);
+	background(0);
 	map.draw();
 	stroke(255);
 	fill(255);
-	textSize(26);
+	textSize(40);
 	text("Cyclecity", width/2, 100);
-    for (int i = 0; i < cyclist.length; ++i) {
+	textSize(20);
+	text("Time : "+falsehours+":"+falseminute, 200, 100);
+	for (int i = 0; i < cyclist.length; ++i) {
 		cyclist[i].drawTrip();
-		//cyclist[i].;
 	}
 	executeEachSecondChange();
-	//camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
 }
 
-public void mouseMoved(){
-	
-	
+public boolean sketchFullScreen() {
+  return true;
 }
 
 public void getUsers(){
@@ -169,6 +162,11 @@ public void getUsers(){
 	}
 }
 
+public void keypressed(){
+	
+}
+
+
 public void fakeTime(){
 	falseminute++;
 	if (falseminute>=60) {
@@ -186,7 +184,10 @@ public void executeEachSecondChange(){
   if (currentsecond != second()){
       currentsecond = second();
       fakeTime();
-
+    for (int i = 0; i < cyclist.length; ++i) {
+		cyclist[i].tripAtTime(falsehours,falseminute);
+	}
+      //println(falsehours+" : "+falseminute);
   }
 
   if (currentminute != minute()) {
@@ -198,28 +199,29 @@ class Cyclist {
 
   public String username;
   public int userid;
-  public JSONObject datas;
-  public Trip [] usertrips;
-  public String [][] debutrip;
+  //public JSONObject datas;
+  public Trip [] usertrips; // Stockage de tous les trajets r\u00e9cup\u00e9r\u00e9s du serveur
+  public ArrayList<Trip> tripsOk; // Trajets finaux dessin\u00e9s 
+  //public String [][] debutrip;
 
 	 public Cyclist (String username, int userid){
 	 	this.userid = userid;
 	 	this.username = username;
+	 	tripsOk = new ArrayList<Trip>();
 	 }
 
 	 public void getTripWithId(){
 	 	try {
 			GetRequest getusers = new GetRequest("http://kalyptusprod.fr/api/getinfos.php?gettrips=all&iduser="+userid);
 			getusers.send();
-			datas = new JSONObject();
+			JSONObject datas = new JSONObject();
 			datas = parseJSONObject(getusers.getContent());
 			//println("Trips : "+datas+" for user : "+userid);
-			
 			usertrips = new Trip[datas.size()];
-			debutrip = new String[datas.size()][datas.size()];
+			//debutrip = new String[datas.size()][datas.size()];
 			for (int i = 0; i < usertrips.length; ++i) {
-				debutrip[i] = split(datas.getJSONObject(str(i)).getString("debut"),":");
-				println(debutrip[i][0]);
+				//debutrip[i] = split(datas.getJSONObject(str(i)).getString("debut"),":");
+				//println(debutrip[i][0]);
 				usertrips[i] = new Trip (PApplet.parseInt(datas.getJSONObject(str(i)).getString("id")), 
 										datas.getJSONObject(str(i)).getString("debut"),
 										datas.getJSONObject(str(i)).getString("fin"));
@@ -231,20 +233,35 @@ class Cyclist {
 		}
 	 }
 
-	 public void drawTrip(){
+	 // Test si il y a un trajet \u00e0 heure / minute pass\u00e9 en argument
+	 // Si oui on ajoute le trajet \u00e0 tripOk
+	 public void tripAtTime(int heure, int mn){
+	 	String heur = str(heure);
+	 	String minut = str(mn);
+	 	if (heure<10) {
+	 		heur = "0"+heure;
+	 	}if (mn<10) {
+	 		minut = "0"+mn;
+	 	}
+	 	//println(minut+" : "+heur);
 	 	for (int i = 0; i < usertrips.length; ++i) {
-	 		for (int j = 0; j < usertrips[i].markerlength; ++j) {
-	 			map.addMarkers(usertrips[i].markers[j]);
-	 			//map.addMarkers(usertrips[i].threemarker[j]);
+	 		println(usertrips[i].begintrip+"   "+heur+":"+minut); // Debug mode
+	 		//println(usertrips[i].begintrip.equals(heur+":"+minut));
+	 		if (usertrips[i].begintrip.equals(heur+":"+minut)) {
+	 			tripsOk.add(usertrips[i]);
+	 		}
+	 		//println(usertrips[i].begintrip);
+	 	}
+	 }
+
+	 // Affiche les trajets de tripsOk
+	 public void drawTrip(){
+	 	for (int i = 0; i < tripsOk.size(); ++i) {
+	 		for (int j = 0; j < tripsOk.get(i).markerlength; ++j) {
+	 			map.addMarkers(tripsOk.get(i).markers[j]);
 	 		}
 	 	}
 	}
-
-	// public String getBeginTrip(){
-	// 	for (int i = 0; i < usertrips.length; ++i) {
-	//  		return usertrips[i].begintrip;
-	//  	}
-	// }
 }
 public class ThreeLinesMaker extends SimpleLinesMarker {
  	
@@ -297,11 +314,10 @@ class Trip {
     public int idtrip;
     public String begintrip;
     public String endtrip;
-	public JSONObject datas;
     public Location [] locations;
     public float [] vitesse;
     public SimpleLinesMarker [] markers; //public SimpleLinesMarker [] markers;
-    public ThreeLinesMaker [] threemarker; // option
+    //public ThreeLinesMaker [] threemarker; // option
     public int markerlength;
     public int [] tripcolor = {0xffEBEBBC,0xff52E3AC,0xffF21D41};
     public int indexcolor;
@@ -313,13 +329,18 @@ class Trip {
         this.endtrip = endtrip;
     }
 
+    /**********
+    ***
+    *** R\u00e9cup\u00e9ration des positions pour chaque trajets
+    ***
+    ***********/
     public void getLocationForTrip(int userid){
         try {
 
         	println("http://kalyptusprod.fr/api/getinfos.php?iduser="+userid+"&time="+begintrip);
             GetRequest getlocations = new GetRequest("http://kalyptusprod.fr/api/getinfos.php?iduser="+userid+"&time="+begintrip);
             getlocations.send();
-            datas = new JSONObject();
+            JSONObject datas = new JSONObject();
             datas = parseJSONObject(getlocations.getContent());
             vitesse = new float[datas.size()];
             locations = new Location[datas.size()];
@@ -337,8 +358,12 @@ class Trip {
         setMarkersWithLocations();
     }
 
+    /**********
+    ***
+    *** Initialisation des markers avec les positions
+    ***
+    ***********/
 	 public void setMarkersWithLocations(){
-        //threemarker = new ThreeLinesMaker[locations.length];
         markers = new SimpleLinesMarker[locations.length];
 	 	int k = 0;
         int vi;
@@ -354,9 +379,9 @@ class Trip {
             //println("vitesse 1 : "+vit1+"vitesse 2 : "+vit2);
             if (this.vit1<70) {
                 indexcolor = 2; // rouge 
-            }else if (this.vit1>70 && this.vit1<100){
+            }else if (this.vit1>70 && this.vit1<120){
                 indexcolor = 1; // vert
-            }else if (this.vit1>100) {
+            }else if (this.vit1>120) {
                 indexcolor = 0; // jaune
             }
             //println("index : "+indexcolor);

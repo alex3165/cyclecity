@@ -3,8 +3,6 @@ TODO
 
 IN PROGRESS ------------------------
 
-- (P5) Requêtes GET keolis + personal server : ./p5/rendu/request.pde
-
 - (DATAS) Relève des données des cyclistes
 
 
@@ -13,12 +11,12 @@ QUEUE ---------------------
 
 - (WEB) Simple page web pour expliquer comment fonctionne l’app IOS et proposer de la télécharger.
 
-- (P5) Classe pour stocker les données sur les stations de vélo
-
-- (P5) Class cyclist.pde pour stocker les infos de l’utilisateur (loc/vitesse/trajet)
+- (IOS / API) Revoir le système d'envoi des données IOS / Serveur --> p-e stockage en local du trajet puis envoi des req groupé
 
 
 DONE -------------------------
+
+- (P5) Class cyclist.pde pour stocker les infos de l’utilisateur (loc/vitesse/trajet)
 
 - (IOS) Singleton DCUser, méthode GetUser
 

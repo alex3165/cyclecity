@@ -7,41 +7,37 @@ import de.fhpotsdam.unfolding.marker.*;
 import processing.net.*;
 import http.requests.*; // Shiffman lib for http requests
 
-import codeanticode.syphon.*; // syphon pour sortie vidéo
-
 // import for SQLite JDBC : storage map
 import de.bezier.data.sql.*;
 
-// import java.io.*;
 import java.util.*;
 
 /********* For Map *********/
 UnfoldingMap map;
+//DebugDisplay debugDisplay;
 MBTilesMapProvider mytiles;
 //SimplePointMarker mymarker;
 //Location [] locations;
 int falsesecond, falseminute, falsehours;
 int currentsecond, currentminute;
-int nbmarkertodisplay;
-//Location startLocation, endLocation, startLocation2, endLocation2;
-//SimpleLinesMarker connectionMarker, connectionMarker2;
+//int nbmarkertodisplay;
 
 JSONObject users;
 
 Cyclist [] cyclist;
 
 void setup() {
-	size(displayWidth, displayHeight, OPENGL);
+	size(displayWidth, displayHeight);
 	falsesecond = 0;
 	falseminute = 0;
 	falsehours = 16;
 
 	/************** UNFOLDING PART ***********/
-	String tilesStr = sketchPath("data/Alexandre.mbtiles");
+	String tilesStr = sketchPath("data/cyclecity.mbtiles");
 	map = new UnfoldingMap(this,new MBTilesMapProvider(tilesStr));
-    MapUtils.createDefaultEventDispatcher(this, map);
-    map.setZoomRange(13, 14);
+    map.setZoomRange(13, 13);
     map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 13);
+    MapUtils.createDefaultEventDispatcher(this, map);
     /*****************************/
 
 	getUsers();
@@ -49,24 +45,22 @@ void setup() {
 
 void draw() {
 
-	//executeEachSecondChange();
-    background(255);
+	background(0);
 	map.draw();
 	stroke(255);
 	fill(255);
-	textSize(26);
+	textSize(40);
 	text("Cyclecity", width/2, 100);
-    for (int i = 0; i < cyclist.length; ++i) {
+	textSize(20);
+	text("Time : "+falsehours+":"+falseminute, 200, 100);
+	for (int i = 0; i < cyclist.length; ++i) {
 		cyclist[i].drawTrip();
-		//cyclist[i].;
 	}
 	executeEachSecondChange();
-	//camera(mouseX, mouseY, (height/2) / tan(PI/6), width/2, height/2, 0, 0, 1, 0);
 }
 
-void mouseMoved(){
-	
-	
+boolean sketchFullScreen() {
+  return true;
 }
 
 void getUsers(){
@@ -87,6 +81,11 @@ void getUsers(){
 	}
 }
 
+void keypressed(){
+	
+}
+
+
 void fakeTime(){
 	falseminute++;
 	if (falseminute>=60) {
@@ -104,7 +103,10 @@ void executeEachSecondChange(){
   if (currentsecond != second()){
       currentsecond = second();
       fakeTime();
-
+    for (int i = 0; i < cyclist.length; ++i) {
+		cyclist[i].tripAtTime(falsehours,falseminute);
+	}
+      //println(falsehours+" : "+falseminute);
   }
 
   if (currentminute != minute()) {
