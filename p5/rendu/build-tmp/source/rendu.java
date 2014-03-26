@@ -10,7 +10,6 @@ import de.fhpotsdam.unfolding.utils.*;
 import de.fhpotsdam.unfolding.marker.*; 
 import processing.net.*; 
 import http.requests.*; 
-import de.bezier.data.sql.*; 
 import java.util.*; 
 
 import org.apache.http.*; 
@@ -35,6 +34,7 @@ import org.apache.commons.codec.digest.*;
 import org.apache.http.client.entity.*; 
 import org.apache.http.conn.socket.*; 
 import org.apache.http.conn.params.*; 
+import org.sqlite.*; 
 import org.apache.http.cookie.*; 
 import org.apache.http.conn.routing.*; 
 import org.apache.commons.logging.*; 
@@ -50,6 +50,7 @@ import org.apache.http.concurrent.*;
 import org.apache.http.conn.*; 
 import org.apache.http.client.config.*; 
 import org.apache.commons.codec.net.*; 
+import org.sqlite.javax.*; 
 import org.apache.http.pool.*; 
 import org.apache.http.io.*; 
 import org.apache.http.client.*; 
@@ -89,7 +90,7 @@ public class rendu extends PApplet {
  // Shiffman lib for http requests
 
 // import for SQLite JDBC : storage map
-
+//import de.bezier.data.sql.*;
 
 
 

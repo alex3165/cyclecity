@@ -8,7 +8,7 @@ import processing.net.*;
 import http.requests.*; // Shiffman lib for http requests
 
 // import for SQLite JDBC : storage map
-import de.bezier.data.sql.*;
+//import de.bezier.data.sql.*;
 
 import java.util.*;
 
@@ -106,7 +106,6 @@ void executeEachSecondChange(){
     for (int i = 0; i < cyclist.length; ++i) {
 		cyclist[i].tripAtTime(falsehours,falseminute);
 	}
-      //println(falsehours+" : "+falseminute);
   }
 
   if (currentminute != minute()) {
