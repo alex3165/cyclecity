@@ -89,9 +89,6 @@ public class rendu extends PApplet {
 
  // Shiffman lib for http requests
 
-// import for SQLite JDBC : storage map
-//import de.bezier.data.sql.*;
-
 
 
 /********* For Map *********/
@@ -103,7 +100,7 @@ MBTilesMapProvider mytiles;
 int falsesecond, falseminute, falsehours;
 int currentsecond, currentminute;
 //int nbmarkertodisplay;
-
+boolean all;
 JSONObject users;
 
 Cyclist [] cyclist;
@@ -121,7 +118,7 @@ public void setup() {
     map.zoomAndPanTo(new Location(48.1134750f, -1.6757080f), 13);
     MapUtils.createDefaultEventDispatcher(this, map);
     /*****************************/
-
+	all = false;
 	getUsers();
 }
 
@@ -133,10 +130,19 @@ public void draw() {
 	fill(255);
 	textSize(40);
 	text("Cyclecity", width/2, 100);
-	textSize(20);
-	text("Time : "+falsehours+":"+falseminute, 200, 100);
+	if (keyPressed) {
+		if (key == 'b' || key == 'B') {
+	  		all = true;
+		}
+	}
 	for (int i = 0; i < cyclist.length; ++i) {
-		cyclist[i].drawTrip();
+		if (all) {
+			cyclist[i].drawAllTrip();
+		}else {
+			textSize(20);
+			text("Time : "+falsehours+":"+falseminute, 200, 100);
+			cyclist[i].drawTrip();
+		}
 	}
 	executeEachSecondChange();
 }
@@ -163,10 +169,6 @@ public void getUsers(){
 	}
 }
 
-public void keypressed(){
-	
-}
-
 
 public void fakeTime(){
 	falseminute++;
@@ -188,7 +190,6 @@ public void executeEachSecondChange(){
     for (int i = 0; i < cyclist.length; ++i) {
 		cyclist[i].tripAtTime(falsehours,falseminute);
 	}
-      //println(falsehours+" : "+falseminute);
   }
 
   if (currentminute != minute()) {
@@ -246,7 +247,7 @@ class Cyclist {
 	 	}
 	 	//println(minut+" : "+heur);
 	 	for (int i = 0; i < usertrips.length; ++i) {
-	 		println(usertrips[i].begintrip+"   "+heur+":"+minut); // Debug mode
+	 		//println(usertrips[i].begintrip+"   "+heur+":"+minut); // Debug mode
 	 		//println(usertrips[i].begintrip.equals(heur+":"+minut));
 	 		if (usertrips[i].begintrip.equals(heur+":"+minut)) {
 	 			tripsOk.add(usertrips[i]);
@@ -260,6 +261,14 @@ class Cyclist {
 	 	for (int i = 0; i < tripsOk.size(); ++i) {
 	 		for (int j = 0; j < tripsOk.get(i).markerlength; ++j) {
 	 			map.addMarkers(tripsOk.get(i).markers[j]);
+	 		}
+	 	}
+	}
+
+	public void drawAllTrip(){
+	 	for (int i = 0; i < usertrips.length; ++i) {
+	 		for (int j = 0; j < usertrips[i].markerlength; ++j) {
+	 			map.addMarkers(usertrips[i].markers[j]);
 	 		}
 	 	}
 	}

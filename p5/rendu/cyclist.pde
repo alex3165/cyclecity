@@ -48,7 +48,7 @@ class Cyclist {
 	 	}
 	 	//println(minut+" : "+heur);
 	 	for (int i = 0; i < usertrips.length; ++i) {
-	 		println(usertrips[i].begintrip+"   "+heur+":"+minut); // Debug mode
+	 		//println(usertrips[i].begintrip+"   "+heur+":"+minut); // Debug mode
 	 		//println(usertrips[i].begintrip.equals(heur+":"+minut));
 	 		if (usertrips[i].begintrip.equals(heur+":"+minut)) {
 	 			tripsOk.add(usertrips[i]);
@@ -62,6 +62,14 @@ class Cyclist {
 	 	for (int i = 0; i < tripsOk.size(); ++i) {
 	 		for (int j = 0; j < tripsOk.get(i).markerlength; ++j) {
 	 			map.addMarkers(tripsOk.get(i).markers[j]);
+	 		}
+	 	}
+	}
+
+	public void drawAllTrip(){
+	 	for (int i = 0; i < usertrips.length; ++i) {
+	 		for (int j = 0; j < usertrips[i].markerlength; ++j) {
+	 			map.addMarkers(usertrips[i].markers[j]);
 	 		}
 	 	}
 	}
