@@ -1,1 +1,3 @@
 p5/rendu/build-tmp/
+sondage/vendor/*
+sondage/web/node_modules/*
